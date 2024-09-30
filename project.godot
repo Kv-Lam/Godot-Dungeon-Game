@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 PlayerVariables="*res://player_variables.gd"
+RoomTransitions="*res://RoomTransitions.gd"
 
 [input]
 
