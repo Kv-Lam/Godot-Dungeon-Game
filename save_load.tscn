@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bn1myydadq37t"]
+[gd_scene load_steps=4 format=3 uid="uid://bn1myydadq37t"]
 
 [ext_resource type="Script" path="res://save_load.gd" id="1_rv2p3"]
+[ext_resource type="Script" path="res://line_edit.gd" id="2_tofvr"]
+[ext_resource type="Script" path="res://spin_box.gd" id="3_vboxh"]
 
 [node name="SaveLoad" type="Control"]
 layout_mode = 3
@@ -11,15 +13,17 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rv2p3")
 
-[node name="LineEdit" type="LineEdit" parent="."]
+[node name="LineEdit" type="LineEdit" parent="." groups=["SaveLoad"]]
 layout_mode = 0
 offset_right = 67.0625
 offset_bottom = 31.0
+script = ExtResource("2_tofvr")
 
 [node name="SpinBox" type="SpinBox" parent="."]
 layout_mode = 0
 offset_right = 83.0625
 offset_bottom = 31.0
+script = ExtResource("3_vboxh")
 
 [node name="Save" type="Button" parent="."]
 layout_mode = 0
