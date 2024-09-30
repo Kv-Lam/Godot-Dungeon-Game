@@ -24,6 +24,7 @@ offset_bottom = 159.0
 script = ExtResource("2_tofvr")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="LineEdit"]
+visible = false
 layout_mode = 0
 offset_left = 16.0
 offset_top = 8.0
@@ -47,6 +48,7 @@ offset_right = 816.0
 offset_bottom = 240.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Save"]
+visible = false
 layout_mode = 0
 offset_left = 144.0
 offset_top = 8.0
@@ -62,6 +64,7 @@ offset_right = 816.0
 offset_bottom = 320.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Load"]
+visible = false
 layout_mode = 0
 offset_left = 144.0
 offset_top = 8.0
@@ -77,6 +80,7 @@ offset_right = 816.0
 offset_bottom = 400.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Delete"]
+visible = false
 layout_mode = 0
 offset_left = 144.0
 offset_top = 8.0
