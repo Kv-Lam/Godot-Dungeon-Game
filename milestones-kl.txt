@@ -14,13 +14,14 @@ Rubric:
 +6 In-game menu system with party, inventory, saving, and quitting.
 +4 Inventory system.
 +3 Load/save feature.
-+3 Player stats, skills, and levels (2 per).
++3 Player stats, skills, and levels (1 per).
 +2 Enemies and a range-based detection system to make them chase the player.
 +1 Movement and collision detection/handling.
 +1 Main menu.
 +.5 Static enemy generation in rooms
 +.5 Story
 
-Overall, I think this challenge went well. We have a very clear idea and a good game plan on what we want to accomplish with our project. 
-We slightly know how to implement most of it based on what we have learned while planning and doing this challenge. Hopefully we will be able
-to implement all of the features we want, but this is our first time working with Godot so things may change when we run into an obstacle.
+My tasks:
+Combat system, in-game menu, inventory system, enemy range-based detection system (Detecting player if they are too close to monster and enemies chasing player), movement and collision detection/handling, main menu (Sean makes the background while I just make the buttons work), and static enemy generation (Sean will most likely take this though). These are pretty subject to change based on who is able to complete their tasks first, so if David finishes his pretty quickly then he may take a few of my tasks.
+
+Overall, I think this challenge went well. We have a very clear idea and a good game plan on what we want to accomplish with our project. We slightly know how to implement most of it based on what we have learned while planning and doing this challenge. Hopefully we will be able to implement all of the features we want, but this is our first time working with Godot so things may change when we run into an obstacle.
