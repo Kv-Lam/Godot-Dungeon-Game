@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://upp2xojc2uyk"]
+[gd_scene load_steps=5 format=3 uid="uid://upp2xojc2uyk"]
 
 [ext_resource type="Texture2D" uid="uid://b45r0uea1ic5v" path="res://icon.svg" id="1_0i3a2"]
+[ext_resource type="Script" path="res://test_enemy.gd" id="1_3eagf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wdi0j"]
 size = Vector2(127, 125)
@@ -20,6 +21,7 @@ animations = [{
 
 [node name="TestEnemy" type="CharacterBody2D" parent="."]
 position = Vector2(224, 315)
+script = ExtResource("1_3eagf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TestEnemy"]
 position = Vector2(0.5, -0.5)

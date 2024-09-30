@@ -15,6 +15,3 @@ func _physics_process(_delta):
 		var collision = get_slide_collision(i)
 		if collision and collision.get_collider().name == "TestEnemy":
 			print("Fight.")
-	#var collision = move_and_collide(velocity * _delta)
-	#if collision and collision.get_collider().name == "TestEnemy": #Work on detecting what is collided with, so on enemy collision a fight is started.
-		#print("Collision.")
