@@ -9,84 +9,50 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 3.0
-offset_bottom = 4.0
+offset_left = -32.0
+offset_top = 56.0
+offset_right = -133.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rv2p3")
 
 [node name="LineEdit" type="LineEdit" parent="." groups=["SaveLoad"]]
 layout_mode = 0
-offset_left = 472.0
-offset_top = 112.0
-offset_right = 728.0
-offset_bottom = 159.0
+offset_left = 432.0
+offset_top = 152.0
+offset_right = 688.0
+offset_bottom = 199.0
 script = ExtResource("2_tofvr")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="LineEdit"]
-visible = false
-layout_mode = 0
-offset_left = 16.0
-offset_top = 8.0
-offset_right = 112.0
-offset_bottom = 32.0
-text = "Text to Save"
 
 [node name="SpinBox" type="SpinBox" parent="." groups=["SaveLoad"]]
 layout_mode = 0
-offset_left = 741.0
-offset_top = 112.0
-offset_right = 824.063
-offset_bottom = 159.0
+offset_left = 696.0
+offset_top = 152.0
+offset_right = 779.063
+offset_bottom = 199.0
 script = ExtResource("3_vboxh")
 
 [node name="Save" type="Button" parent="."]
 layout_mode = 0
-offset_left = 472.0
-offset_top = 192.0
-offset_right = 816.0
-offset_bottom = 240.0
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Save"]
-visible = false
-layout_mode = 0
-offset_left = 144.0
-offset_top = 8.0
-offset_right = 184.0
-offset_bottom = 32.0
-text = "Save"
+offset_left = 432.0
+offset_top = 216.0
+offset_right = 776.0
+offset_bottom = 264.0
 
 [node name="Load" type="Button" parent="."]
 layout_mode = 0
-offset_left = 472.0
-offset_top = 272.0
-offset_right = 816.0
-offset_bottom = 320.0
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Load"]
-visible = false
-layout_mode = 0
-offset_left = 144.0
-offset_top = 8.0
-offset_right = 184.0
-offset_bottom = 32.0
-text = "Load"
+offset_left = 432.0
+offset_top = 280.0
+offset_right = 776.0
+offset_bottom = 328.0
 
 [node name="Delete" type="Button" parent="."]
 layout_mode = 0
-offset_left = 472.0
+offset_left = 432.0
 offset_top = 352.0
-offset_right = 816.0
+offset_right = 776.0
 offset_bottom = 400.0
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Delete"]
-visible = false
-layout_mode = 0
-offset_left = 144.0
-offset_top = 8.0
-offset_right = 200.0
-offset_bottom = 32.0
-text = "Delete"
 
 [connection signal="pressed" from="Save" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="Load" to="." method="_on_load_pressed"]
