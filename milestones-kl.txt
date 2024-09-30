@@ -1,0 +1,26 @@
+3 hours: Meeting with group to make an outline, plan everything (art direction, classes, features, etc.), and distrubtion of roles.
+1 and 1/2 hours: Reading documentation on how to do momvement and collisions. Implemented an 8-way movement with rotational direction saving with move_and_slide().
+1 and 1/2 hours: Learning and implementing collisions and detecting the object that the player collides with.
+1 hour: Reading documentation on scenes and different classes. Also set up GitHub repo, basic testing scenes, a player, camera, and test enemy.
+1 hour: Reading about scene switching, how to carry over data from one scene to another using singletons, and slightly about how to make save/load states using these singletons.
+1 hour: Lab doing writeup and rubric.
+
+GitHub repo link: https://github.com/Kv-Lam/Godot-Dungeon-Game
+
+Rubric:
++7 Art.
++6 Combat system.
++6 Different rooms and transitioning between them.
++6 In-game menu system with party, inventory, saving, and quitting.
++4 Inventory system.
++3 Load/save feature.
++3 Player stats, skills, and levels (2 per).
++2 Enemies and a range-based detection system to make them chase the player.
++1 Movement and collision detection/handling.
++1 Main menu.
++.5 Static enemy generation in rooms
++.5 Story
+
+Overall, I think this challenge went well. We have a very clear idea and a good game plan on what we want to accomplish with our project. 
+We slightly know how to implement most of it based on what we have learned while planning and doing this challenge. Hopefully we will be able
+to implement all of the features we want, but this is our first time working with Godot so things may change when we run into an obstacle.
