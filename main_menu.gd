@@ -2,10 +2,10 @@
 class_name MainMenu
 extends Control
 
-@onready var new_game = $"VBoxContainer/New Game" as Button
-@onready var load_game = $"VBoxContainer/Load Game" as Button
-@onready var options = $VBoxContainer/Options as Button
-@onready var quit_game = $"VBoxContainer/Quit Game" as Button
+@onready var new_game = $"MainMenuButtons/New Game" as Button
+@onready var load_game = $"MainMenuButtons/Load Game" as Button
+@onready var options = $MainMenuButtons/Options as Button
+@onready var quit_game = $"MainMenuButtons/Quit Game" as Button
 @onready var options_panel = $OptionsPanel as PanelContainer
 
 

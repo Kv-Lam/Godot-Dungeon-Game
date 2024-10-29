@@ -96,7 +96,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="OptionsPanel" type="PanelContainer" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -122,20 +121,20 @@ theme_override_constants/margin_bottom = 460
 layout_mode = 2
 theme_override_constants/separation = -48
 
-[node name="Close Options" type="Button" parent="OptionsPanel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 8
-text = "x"
-alignment = 2
-
-[node name="Label" type="Label" parent="OptionsPanel/MarginContainer"]
+[node name="Options Title" type="Label" parent="OptionsPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 30
 text = "Options"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Close Options" type="Button" parent="OptionsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "x"
+alignment = 2
 
 [node name="Background Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_cnw77")

@@ -13,3 +13,4 @@ func _ready() -> void:
 
 func exit_options() -> void:
 	options_panel.visible = false
+	
