@@ -2,7 +2,7 @@
 extends PanelContainer
 
 @onready var options_panel: PanelContainer = $"."
-@onready var close_options: Button = $"MarginContainer/VBoxContainer/Close Options"
+@onready var close_options: Button = $"OptionsVContainer/OptionsHContainer/Close Options"
 
 
 # Called when the node enters the scene tree for the first time.

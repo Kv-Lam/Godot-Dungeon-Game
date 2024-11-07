@@ -103,47 +103,55 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -256.0
-offset_top = -256.0
+offset_top = -257.0
 offset_right = 256.0
-offset_bottom = 256.0
+offset_bottom = 257.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_fhn3o")
 
-[node name="MarginContainer" type="MarginContainer" parent="OptionsPanel"]
+[node name="OptionsVContainer" type="VBoxContainer" parent="OptionsPanel"]
+layout_mode = 2
+
+[node name="OptionsHContainer" type="HBoxContainer" parent="OptionsPanel/OptionsVContainer"]
+layout_mode = 2
+theme_override_constants/separation = -26
+
+[node name="Options Title" type="Label" parent="OptionsPanel/OptionsVContainer/OptionsHContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_font_sizes/font_size = 30
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Close Options" type="Button" parent="OptionsPanel/OptionsVContainer/OptionsHContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "x"
+alignment = 2
+
+[node name="OptionsMarginContainer" type="MarginContainer" parent="OptionsPanel/OptionsVContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 460
 
-[node name="VBoxContainer" type="VBoxContainer" parent="OptionsPanel/MarginContainer"]
+[node name="OptionsScrollContainer" type="ScrollContainer" parent="OptionsPanel/OptionsVContainer/OptionsMarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = -48
+size_flags_vertical = 3
 
-[node name="ScrollContainer" type="ScrollContainer" parent="OptionsPanel/MarginContainer/VBoxContainer"]
+[node name="ScrollVContainer" type="VBoxContainer" parent="OptionsPanel/OptionsVContainer/OptionsMarginContainer/OptionsScrollContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="VScrollBar" type="VScrollBar" parent="OptionsPanel/MarginContainer/VBoxContainer/ScrollContainer"]
-layout_mode = 2
-size_flags_horizontal = 10
-size_flags_vertical = 7
-custom_step = 100.0
-
-[node name="Options Title" type="Label" parent="OptionsPanel/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 30
-text = "Options"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Close Options" type="Button" parent="OptionsPanel/MarginContainer/VBoxContainer"]
+[node name="VScrollBar" type="VScrollBar" parent="OptionsPanel/OptionsVContainer/OptionsMarginContainer/OptionsScrollContainer/ScrollVContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
-size_flags_vertical = 8
-text = "x"
-alignment = 2
+size_flags_vertical = 7
+custom_step = 100.0
 
 [node name="Background Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_cnw77")
