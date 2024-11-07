@@ -121,6 +121,15 @@ theme_override_constants/margin_bottom = 460
 layout_mode = 2
 theme_override_constants/separation = -48
 
+[node name="ScrollContainer" type="ScrollContainer" parent="OptionsPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VScrollBar" type="VScrollBar" parent="OptionsPanel/MarginContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 7
+custom_step = 100.0
+
 [node name="Options Title" type="Label" parent="OptionsPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
