@@ -147,7 +147,10 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="VScrollBar" type="VScrollBar" parent="OptionsPanel/OptionsVContainer/OptionsMarginContainer/OptionsScrollContainer/ScrollVContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsPanel/OptionsVContainer/OptionsMarginContainer/OptionsScrollContainer/ScrollVContainer"]
+layout_mode = 2
+
+[node name="VScrollBar" type="VScrollBar" parent="OptionsPanel/OptionsVContainer/OptionsMarginContainer/OptionsScrollContainer/ScrollVContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 7
