@@ -149,6 +149,9 @@ size_flags_vertical = 3
 [node name="hotkey_rebind_button" parent="OptionsPanel/OptionsVContainer/OptionsScrollContainer/ScrollVContainer/VBoxContainer" instance=ExtResource("5_kkt3a")]
 layout_mode = 2
 
+[node name="hotkey_rebind_button2" parent="OptionsPanel/OptionsVContainer" instance=ExtResource("5_kkt3a")]
+layout_mode = 2
+
 [node name="OptionsMarginContainer" type="MarginContainer" parent="OptionsPanel/OptionsVContainer"]
 layout_mode = 2
 theme_override_constants/margin_bottom = 10
