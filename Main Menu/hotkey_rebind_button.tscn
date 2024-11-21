@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://b27h3rhsu3vpg"]
 
-[ext_resource type="Script" path="res://hotkey_rebind_button.gd" id="1_3paub"]
+[ext_resource type="Script" path="res://Main Menu/hotkey_rebind_button.gd" id="1_3paub"]
 
-[node name="hotkey_rebind_button" type="Control"]
+[node name="hotkey_rebind_button" type="Control" groups=["hotkey_button"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,7 +22,7 @@ grow_vertical = 2
 alignment = 1
 
 [node name="Label" type="Label" parent="HBoxContainer"]
-custom_minimum_size = Vector2(110, 30)
+custom_minimum_size = Vector2(125, 30)
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
 text = "ACTION"
@@ -30,11 +30,13 @@ vertical_alignment = 1
 
 [node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 245
+theme_override_constants/separation = 230
 
 [node name="Button" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 toggle_mode = true
 text = "ACTION_KEY"
+
+[connection signal="toggled" from="HBoxContainer/Button" to="." method="_on_button_toggled"]

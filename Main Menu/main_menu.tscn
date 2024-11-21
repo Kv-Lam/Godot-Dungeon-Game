@@ -1,11 +1,28 @@
 [gd_scene load_steps=7 format=3 uid="uid://clykqiq66aqm1"]
 
-[ext_resource type="Script" path="res://main_menu.gd" id="1_7omju"]
+[ext_resource type="Script" path="res://Main Menu/main_menu.gd" id="1_7omju"]
 [ext_resource type="AudioStream" uid="uid://l1xpujllfoex" path="res://Audio/In Dreamland by Chillpeach.mp3" id="1_cnw77"]
+[ext_resource type="StyleBox" uid="uid://bopmsvegoujwd" path="res://MenuTheme/mainMenuButtonTheme.tres" id="3_g80wj"]
 [ext_resource type="Texture2D" uid="uid://de2uecq60qs46" path="res://Art/testBackground.png" id="3_vwv2j"]
-[ext_resource type="Script" path="res://options_panel.gd" id="4_fhn3o"]
-[ext_resource type="StyleBox" uid="uid://bopmsvegoujwd" path="res://MenuTheme/mainMenuButtonTheme.tres" id="4_yumpe"]
-[ext_resource type="PackedScene" uid="uid://b27h3rhsu3vpg" path="res://hotkey_rebind_button.tscn" id="5_kkt3a"]
+[ext_resource type="PackedScene" uid="uid://b27h3rhsu3vpg" path="res://Main Menu/hotkey_rebind_button.tscn" id="5_kkt3a"]
+
+[sub_resource type="GDScript" id="GDScript_c1jyk"]
+script/source = "#Kevin's
+extends PanelContainer
+
+@onready var options_panel: PanelContainer = $\".\"
+@onready var close_options: Button = $\"OptionsVContainer/OptionsHContainer/Close Options\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	close_options.pressed.connect(exit_options)
+
+
+func exit_options() -> void:
+	options_panel.visible = false
+	
+"
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -34,9 +51,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -44.0
+offset_left = -52.0
 offset_top = -52.0
-offset_right = 44.0
+offset_right = 52.0
 offset_bottom = 52.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -46,23 +63,23 @@ alignment = 1
 
 [node name="New Game" type="Button" parent="MainMenuButtons"]
 layout_mode = 2
-theme_override_styles/normal = ExtResource("4_yumpe")
+theme_override_styles/normal = ExtResource("3_g80wj")
 text = "New Game"
 
 [node name="Load Game" type="Button" parent="MainMenuButtons"]
 layout_mode = 2
-theme_override_styles/normal = ExtResource("4_yumpe")
+theme_override_styles/normal = ExtResource("3_g80wj")
 text = "Load Game"
 
 [node name="Options" type="Button" parent="MainMenuButtons"]
 layout_mode = 2
-theme_override_styles/normal = ExtResource("4_yumpe")
+theme_override_styles/normal = ExtResource("3_g80wj")
 text = "Options"
 icon_alignment = 1
 
 [node name="Quit Game" type="Button" parent="MainMenuButtons"]
 layout_mode = 2
-theme_override_styles/normal = ExtResource("4_yumpe")
+theme_override_styles/normal = ExtResource("3_g80wj")
 text = "Quit Game"
 icon_alignment = 1
 
@@ -97,6 +114,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="OptionsPanel" type="PanelContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -109,7 +127,7 @@ offset_right = 256.0
 offset_bottom = 257.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("4_fhn3o")
+script = SubResource("GDScript_c1jyk")
 
 [node name="OptionsVContainer" type="VBoxContainer" parent="OptionsPanel"]
 layout_mode = 2
@@ -152,27 +170,31 @@ layout_mode = 2
 
 [node name="hotkey_rebind_button2" parent="OptionsPanel/OptionsVContainer/OptionsScrollContainer/ScrollVContainer/VBoxContainer" instance=ExtResource("5_kkt3a")]
 layout_mode = 2
+action_name = "right"
 
 [node name="hotkey_rebind_button3" parent="OptionsPanel/OptionsVContainer/OptionsScrollContainer/ScrollVContainer/VBoxContainer" instance=ExtResource("5_kkt3a")]
 layout_mode = 2
+action_name = "up"
 
 [node name="hotkey_rebind_button4" parent="OptionsPanel/OptionsVContainer/OptionsScrollContainer/ScrollVContainer/VBoxContainer" instance=ExtResource("5_kkt3a")]
 layout_mode = 2
+action_name = "down"
 
 [node name="hotkey_rebind_button5" parent="OptionsPanel/OptionsVContainer/OptionsScrollContainer/ScrollVContainer/VBoxContainer" instance=ExtResource("5_kkt3a")]
 layout_mode = 2
+action_name = "sprint"
 
 [node name="hotkey_rebind_button6" parent="OptionsPanel/OptionsVContainer/OptionsScrollContainer/ScrollVContainer/VBoxContainer" instance=ExtResource("5_kkt3a")]
 layout_mode = 2
+action_name = "interact"
 
-[node name="hotkey_rebind_button7" parent="OptionsPanel/OptionsVContainer/OptionsScrollContainer/ScrollVContainer/VBoxContainer" instance=ExtResource("5_kkt3a")]
-layout_mode = 2
-
-[node name="hotkey_rebind_button8" parent="OptionsPanel/OptionsVContainer/OptionsScrollContainer/ScrollVContainer/VBoxContainer" instance=ExtResource("5_kkt3a")]
-layout_mode = 2
-
-[node name="hotkey_rebind_button9" parent="OptionsPanel/OptionsVContainer/OptionsScrollContainer/ScrollVContainer/VBoxContainer" instance=ExtResource("5_kkt3a")]
-layout_mode = 2
+[node name="Keybind Duplicate" type="AcceptDialog" parent="OptionsPanel/OptionsVContainer"]
+auto_translate_mode = 1
+title = "Keybind Confliction!"
+initial_position = 1
+size = Vector2i(285, 100)
+unresizable = true
+dialog_text = "This keybind is already being used!"
 
 [node name="OptionsMarginContainer" type="MarginContainer" parent="OptionsPanel/OptionsVContainer"]
 layout_mode = 2
