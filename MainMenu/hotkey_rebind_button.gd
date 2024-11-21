@@ -2,7 +2,7 @@ extends Control
 
 @onready var label = $HBoxContainer/Label as Label
 @onready var button = $HBoxContainer/Button as Button
-@onready var keybind_duplicate = $"../../../../../Keybind Duplicate" as AcceptDialog
+@onready var keybind_duplicate = $"../../../../Keybind Duplicate" as AcceptDialog
 
 @export var action_name: String = "left"
 
