@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://clykqiq66aqm1"]
 
-[ext_resource type="Script" path="res://Main Menu/main_menu.gd" id="1_7omju"]
+[ext_resource type="Script" path="res://MainMenu/main_menu.gd" id="1_7omju"]
 [ext_resource type="AudioStream" uid="uid://l1xpujllfoex" path="res://Audio/In Dreamland by Chillpeach.mp3" id="1_cnw77"]
-[ext_resource type="StyleBox" uid="uid://bopmsvegoujwd" path="res://MenuTheme/mainMenuButtonTheme.tres" id="3_g80wj"]
+[ext_resource type="StyleBox" uid="uid://bopmsvegoujwd" path="res://MainMenuTheme/mainMenuButtonTheme.tres" id="3_g80wj"]
 [ext_resource type="Texture2D" uid="uid://de2uecq60qs46" path="res://Art/testBackground.png" id="3_vwv2j"]
-[ext_resource type="PackedScene" uid="uid://b27h3rhsu3vpg" path="res://Main Menu/hotkey_rebind_button.tscn" id="5_kkt3a"]
+[ext_resource type="PackedScene" uid="uid://b27h3rhsu3vpg" path="res://MainMenu/hotkey_rebind_button.tscn" id="5_kkt3a"]
 
 [sub_resource type="GDScript" id="GDScript_c1jyk"]
 script/source = "#Kevin's
