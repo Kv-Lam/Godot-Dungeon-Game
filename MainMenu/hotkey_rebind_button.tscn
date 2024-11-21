@@ -13,12 +13,8 @@ script = ExtResource("1_3paub")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_right = 514.0
+offset_right = 491.0
 offset_bottom = 36.0
-grow_vertical = 2
 alignment = 1
 
 [node name="Label" type="Label" parent="HBoxContainer"]
