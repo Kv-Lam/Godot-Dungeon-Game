@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://4261q2tkt405" path="res://Art/Fire_Wizard_Front.png" id="2_bj5lg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iwgnj"]
-size = Vector2(128, 128)
+size = Vector2(58, 126)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_x42nc"]
 animations = [{
@@ -23,6 +23,7 @@ collision_layer = 9
 script = ExtResource("1_fl3ie")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_iwgnj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
