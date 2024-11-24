@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 PlayerVariables="*res://player_variables.gd"
-RoomTransitions="*res://RoomTransitions.gd"
 SettingsManager="*res://MainMenu/settings_manager.gd"
 scene_manager="*res://SceneManager.gd"
 
