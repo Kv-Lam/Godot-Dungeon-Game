@@ -32,12 +32,21 @@ func set_action_name():
 			label.text = "Interact"
 
 
+#func set_option_text() -> void:
+	#var action_events = InputMap.action_get_events(action_name)
+	#var action_event = action_events[0]
+	#var action_keycode = OS.get_keycode_string(action_event.physical_keycode)
+	#
+	#button.text= "%s" % action_keycode
+	
 func set_option_text() -> void:
 	var action_events = InputMap.action_get_events(action_name)
+	
 	var action_event = action_events[0]
 	var action_keycode = OS.get_keycode_string(action_event.physical_keycode)
 	
-	button.text= "%s" % action_keycode
+	button.text = "%s" % action_keycode
+
 
 
 func _on_button_toggled(toggled_on: bool) -> void:
