@@ -1,12 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dxbeweq0pabsk"]
+[gd_scene load_steps=2 format=3 uid="uid://dxbeweq0pabsk"]
 
-[ext_resource type="PackedScene" uid="uid://6lmoa10duf85" path="res://player.tscn" id="1_44bbg"]
-[ext_resource type="PackedScene" uid="uid://upp2xojc2uyk" path="res://test_enemy.tscn" id="2_65rdd"]
+[ext_resource type="PackedScene" uid="uid://upp2xojc2uyk" path="res://Entities/test_enemy.tscn" id="2_65rdd"]
 
 [node name="Map" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_44bbg")]
-
 [node name="TestEnemy" parent="." instance=ExtResource("2_65rdd")]
-
-[node name="Node2D" type="Node2D" parent="."]
