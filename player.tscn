@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://6lmoa10duf85"]
 
-[ext_resource type="Script" path="res://player_body.gd" id="1_fl3ie"]
-[ext_resource type="Texture2D" uid="uid://b45r0uea1ic5v" path="res://icon.svg" id="1_ita88"]
+[ext_resource type="Script" path="res://player.gd" id="1_fl3ie"]
+[ext_resource type="Texture2D" uid="uid://4261q2tkt405" path="res://Art/Fire_Wizard_Front.png" id="2_bj5lg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iwgnj"]
 size = Vector2(128, 128)
@@ -10,28 +10,29 @@ size = Vector2(128, 128)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_ita88")
+"texture": ExtResource("2_bj5lg")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[node name="Player" type="Node2D"]
-
-[node name="Player" type="CharacterBody2D" parent="."]
+[node name="Player" type="CharacterBody2D"]
 position = Vector2(556, 317)
+collision_layer = 9
 script = ExtResource("1_fl3ie")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_iwgnj")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_x42nc")
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
+[node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
 drag_left_margin = 0.0
 drag_top_margin = 0.0
 drag_right_margin = 0.0
 drag_bottom_margin = 0.0
+
+[node name="Player" type="Node2D" parent="."]
