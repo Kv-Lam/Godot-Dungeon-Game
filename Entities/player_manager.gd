@@ -4,6 +4,7 @@ extends Node
 #var player_stats :   # Player's stats from Minh.
 var player : CharacterBody2D = null  #The actual player body.
 
+
 func _ready():
 	#Only add the player body if the current scene should have it.
 	if player == null and not is_in_excluded_scene():
