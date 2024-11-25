@@ -1,6 +1,5 @@
 extends Node
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void: #Calling
 	pass
@@ -22,7 +21,7 @@ func _process(delta: float) -> void: #Always running
 	var health = 10
 	var attack = 0
 	var defense = 0
-	var mana = 10
+	var stamina_or_mana = 10
 	var Ability = {0 : "Ability1", 3 : "Ability2", 6 : "Ability3", 9 : "Ultimate"}
 	
 	#leveling up
