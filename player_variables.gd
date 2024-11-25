@@ -3,13 +3,38 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void: #Calling
-	pass # Replace with function body.
+	pass
+
+func addingStats(points) -> int:
+	if points == 10:
+		print("Your ability is already maxed out")
+	else:
+		points += 1
+	return points
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void: #Always running
+	#BASE STATS
+	var lvl = 0
+	var points = 0
 	var exp = 0
-	var level = {"Level 1": 10, "Level 2" : 50, "Level 3" : 150, "Level 4" : 500, "Level 5" : 1000, 
-				 "Level 6" : 2000, "Level 7" : 5000, "Level 8" : 12000, "Level 9" : 20000, "Level 10" : 50000}
+	var health = 10
+	var attack = 0
+	var defense = 0
+	var mana = 10
+	var Ability = {0 : "Ability1", 3 : "Ability2", 6 : "Ability3", 9 : "Ultimate"}
 	
-	#print(level.Level 1)
+	#leveling up
+	var LastXP = 0
+	var CurrentXP = 0
+	var LevelUp = (LastXP + CurrentXP) * 3
+	if CurrentXP >= LevelUp:
+		lvl += 1
+		points += 1
+		#adding to stats
+		print("Level Up an Stat: ")
+		addingStats(stat)
+	
+	
+	
