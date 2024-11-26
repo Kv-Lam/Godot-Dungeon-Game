@@ -14,7 +14,6 @@ func _ready() -> void:
 	#Inferno's Grasp - Summons a roaring flame to engulf enemies
 	#Final Incantation - A last-ditch spell that consumes the Mage's reserves for massive damage
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass

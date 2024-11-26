@@ -13,8 +13,4 @@ func _ready() -> void:
 	#Piercing Gale - Fires an arrow that travels through enemie's armor and defense
 	#Ice Bind - Freezes the Enemey causing them to lose a turn
 	#Hail of Arrows - Launches a flurry of whistling arrows to rain down
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	

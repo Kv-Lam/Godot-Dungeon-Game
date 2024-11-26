@@ -13,8 +13,4 @@ func _ready() -> void:
 	#Phantom Strike - A ghostly attack that strikes an enemy multiple times
 	#Vortex of Blades - Spins in a flurry of daggers damaging enemies
 	#Umbra Assassination - Strikes an enemy from complete stealth, instantly incapacitating them
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	

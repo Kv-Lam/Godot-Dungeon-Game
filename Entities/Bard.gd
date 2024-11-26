@@ -13,7 +13,3 @@ func _ready() -> void:
 	#Cacophony Strike - Releases a burst of sound energy that damages and disorients foes
 	#Rhapsody of Restoration - Heals and removes conditions from allies
 	#Harmony's Embrace - Shields opponent from all damage (ULT)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
