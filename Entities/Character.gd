@@ -1,8 +1,5 @@
-extends Node
+class_name BaseCharacter extends Node
 
-class_name BaseCharacter
-
-var heath = 10
 var xp = 0
 var points = 0
 

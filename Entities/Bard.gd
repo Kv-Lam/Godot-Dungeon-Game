@@ -8,8 +8,11 @@ func _ready() -> void:
 	var defense = 40
 	var dodge = 30
 	var mana = 100
-	var Ability = {0 : "a1", 3 : "a2", 6 : "a3", 9 : "a4"}
-
+	var Ability = {0 : "Harmonic Resonance", 3 : "Cacophony Strike", 6 : "Rhapsody of Restoration", 9 : "Harmony's Embrace"}
+	#Harmonic Resonance - Use vibrations to shatter objects or disarm enemies
+	#Cacophony Strike - Releases a burst of sound energy that damages and disorients foes
+	#Rhapsody of Restoration - Heals and removes conditions from allies
+	#Harmony's Embrace - Shields opponent from all damage (ULT)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

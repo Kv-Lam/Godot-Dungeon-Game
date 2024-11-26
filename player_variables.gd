@@ -14,15 +14,16 @@ func addingStats(points) -> int:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void: #Always running
-	#leveling up
-	var LastXP = 0
-	var CurrentXP = 0
-	var LevelUp = (LastXP + CurrentXP) * 3
-	if CurrentXP >= LevelUp:
-		lvl += 1
-		points += 1
-		#adding to stats
-		print("Level Up an Stat: ")
 	
+	#leveling up
+	#var LastXP = 0
+	#var CurrentXP = 0
+	#var LevelUp = (LastXP + CurrentXP) * 3
+	#if CurrentXP >= LevelUp:
+	#	lvl += 1
+	#	points += 1
+		#adding to stats
+	#	print("Level Up an Stat: ")
+	pass	
 	
 	

@@ -8,7 +8,11 @@ func _ready() -> void:
 	var defense = 30
 	var dodge = 50
 	var stamina = 100
-	var Ability = {0 : "a1", 3 : "a2", 6 : "a3", 9 : "a4"}
+	var Ability = {0 : "Backstab Blitz", 3 : "Phantom Strike", 6 : "Vortex of Blades", 9 : "Umbra Assassination"}
+	#Backstab Blitz - A devastating strike from the shadows
+	#Phantom Strike - A ghostly attack that strikes an enemy multiple times
+	#Vortex of Blades - Spins in a flurry of daggers damaging enemies
+	#Umbra Assassination - Strikes an enemy from complete stealth, instantly incapacitating them
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
