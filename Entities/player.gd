@@ -4,6 +4,9 @@ const SPEED = 300.0
 
 var health = 100
 
+func _ready():
+	global_position = PlayerManager.player_position
+
 func get_input(): #Deals with 8-way movement and rotation of character.
 	var movement = Input.get_vector("left", "right", "up", "down")
 	velocity = movement * SPEED
@@ -15,5 +18,8 @@ func _physics_process(_delta):
 	move_and_slide()
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
-		if collision and collision.get_collider().name == "TestEnemy":
-			print("Fight.")
+		if collision and collision.get_collider().name == "Enemy":
+			PlayerManager.current_enemy = collision.get_collider()
+			PlayerManager.player_position = Vector2()
+			PlayerManager.save_current_scene(self)
+			get_tree().change_scene_to_file("res://fight.tscn")

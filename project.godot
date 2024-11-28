@@ -23,8 +23,8 @@ buses/default_bus_layout="res://Audio/default_bus_layout.tres"
 
 SettingsManager="*res://Scenes/MainMenu/settings_manager.gd"
 scene_manager="*res://SceneManager.gd"
-PlayerManager="*res://Entities/player_manager.gd"
 Exp="*res://exp.gd"
+PlayerManager="*res://Entities/player_manager.gd"
 
 [display]
 
