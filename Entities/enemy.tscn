@@ -20,19 +20,17 @@ size = Vector2(128, 128)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3163j"]
 size = Vector2(109.5, 84.75)
 
-[node name="Enemy" type="Node2D"]
-
-[node name="Enemy" type="CharacterBody2D" parent="."]
+[node name="Enemy" type="CharacterBody2D"]
 position = Vector2(224, 315)
 script = ExtResource("1_3eagf")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Enemy"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_wprve")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_wdi0j")
 
-[node name="Area2D" type="Area2D" parent="Enemy"]
+[node name="Area2D" type="Area2D" parent="."]
 
-[node name="DetectionRange" type="CollisionShape2D" parent="Enemy/Area2D"]
+[node name="DetectionRange" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_3163j")

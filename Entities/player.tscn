@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://6lmoa10duf85"]
+[gd_scene load_steps=6 format=3 uid="uid://6lmoa10duf85"]
 
 [ext_resource type="Script" path="res://Entities/player.gd" id="1_fl3ie"]
 [ext_resource type="Texture2D" uid="uid://4261q2tkt405" path="res://Art/Fire_Wizard_Front.png" id="2_bj5lg"]
+[ext_resource type="PackedScene" uid="uid://dwq4ypqbvobwh" path="res://Scenes/fight.tscn" id="3_ooudk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iwgnj"]
 size = Vector2(58, 126)
@@ -17,23 +18,27 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Node2D" type="Node2D"]
+
+[node name="Fight" parent="." instance=ExtResource("3_ooudk")]
+visible = false
+
+[node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(556, 317)
 collision_layer = 9
 script = ExtResource("1_fl3ie")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_iwgnj")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 sprite_frames = SubResource("SpriteFrames_x42nc")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="Player"]
+visible = false
 zoom = Vector2(0.5, 0.5)
 drag_left_margin = 0.0
 drag_top_margin = 0.0
 drag_right_margin = 0.0
 drag_bottom_margin = 0.0
-
-[node name="Player" type="Node2D" parent="."]

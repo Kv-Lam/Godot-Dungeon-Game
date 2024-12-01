@@ -5,6 +5,9 @@
 
 [node name="Map" type="Node2D"]
 
-[node name="Goblin" parent="." instance=ExtResource("2_65rdd")]
+[node name="Enemy" parent="." instance=ExtResource("2_65rdd")]
+
+[node name="Enemy2" parent="." instance=ExtResource("2_65rdd")]
+position = Vector2(1392, 612)
 
 [node name="Player" parent="." instance=ExtResource("2_mbrhp")]
