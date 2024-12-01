@@ -6,7 +6,7 @@ func _ready() -> void:
 	const speed = 40
 	var attack = 20
 	var defense = 40
-	var dodge = 30
+	const dodge = 30
 	var mana = 100
 	var Ability = {0 : "Harmonic Resonance", 3 : "Cacophony Strike", 6 : "Rhapsody of Restoration", 9 : "Harmony's Embrace"}
 	#Harmonic Resonance - Use vibrations to shatter objects or disarm enemies

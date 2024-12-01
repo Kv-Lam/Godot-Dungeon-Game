@@ -6,7 +6,7 @@ func _ready() -> void:
 	const speed = 30
 	var attack = 30
 	var defense = 10
-	var dodge = 20
+	const dodge = 20
 	var mana = 100
 	var Ability = {0 : "Spell Flux", 3 : "Void Nova", 6 : "Inferno Grasp", 9 : "Final Incantation"}
 	#Spell Flux - Calls down starlight to smite enemies or empower allies

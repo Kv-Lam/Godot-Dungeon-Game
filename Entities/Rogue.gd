@@ -6,7 +6,7 @@ func _ready() -> void:
 	const speed = 60
 	var attack = 30
 	var defense = 30
-	var dodge = 50
+	const dodge = 50
 	var stamina = 100
 	var Ability = {0 : "Backstab Blitz", 3 : "Phantom Strike", 6 : "Vortex of Blades", 9 : "Umbra Assassination"}
 	#Backstab Blitz - A devastating strike from the shadows

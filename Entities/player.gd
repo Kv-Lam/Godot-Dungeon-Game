@@ -24,10 +24,10 @@ func _physics_process(_delta):
 		var collision = get_slide_collision(i)
 		if collision and collision.get_collider() is Enemy:
 			print("Fight!")
-			enter_combat(self)
+			enter_combat(self, collision.get_collider().name)
 
 
-func enter_combat(player: CharacterBody2D):
+func enter_combat(player: CharacterBody2D, collided_enemy: String):
 	var fight_camera = fight.get_child(1)
 	var ui_nodes: Array = fight.get_children()
 	
@@ -47,7 +47,8 @@ func enter_combat(player: CharacterBody2D):
 	player.set_process(false)
 	player.set_physics_process(false)
 	
-
+	fight.set_up_fight(collided_enemy)
+	
 	# Ensure the UI remains interactive
 	#for ui_node in ui_nodes:
 		#ui_node.set_process(true)  # Keep UI active (buttons, menus, etc.)

@@ -6,7 +6,7 @@ func _ready() -> void:
 	const speed = 50
 	var attack = 30
 	var defense = 30
-	var dodge = 60
+	const dodge = 60
 	var stamina = 100
 	var Ability = {0 : "Flame Shot", 3 : "Piercing Gale", 6 : "Icy Bind", 9 : "Hail of Arrows"}
 	#Flame Shot - Shoots a burst of firey arrows

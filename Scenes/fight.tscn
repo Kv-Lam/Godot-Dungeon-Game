@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dwq4ypqbvobwh"]
+[gd_scene load_steps=3 format=3 uid="uid://dwq4ypqbvobwh"]
 
 [ext_resource type="Script" path="res://Scenes/fight.gd" id="1_r6qog"]
+[ext_resource type="Texture2D" uid="uid://4261q2tkt405" path="res://Art/Fire_Wizard_Front.png" id="2_wh34o"]
 
 [node name="Fight" type="Control"]
 layout_mode = 3
@@ -92,6 +93,43 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="PlayerPartyContainier" type="HBoxContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -115.0
+offset_right = 960.0
+offset_bottom = 310.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="TextureRect3" type="TextureRect" parent="ColorRect/PlayerPartyContainier"]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+texture = ExtResource("2_wh34o")
+
+[node name="TextureRect4" type="TextureRect" parent="ColorRect/PlayerPartyContainier"]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+texture = ExtResource("2_wh34o")
+
+[node name="EnemyPartyContainer" type="HBoxContainer" parent="ColorRect"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 425.0
+theme_override_constants/separation = 350
+alignment = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0

@@ -9,8 +9,6 @@ var player : Node2D = null  # Reference to the detected player
 @onready var collision_shape_body = $CollisionShape2D  # For physical collisions
 @onready var detection_range = $Area2D/DetectionRange
 
-var enemy_name: String = ""
-
 func _ready():
 	# Connect Area2D signals for detection
 	set_enemy_name()
@@ -23,16 +21,16 @@ func _physics_process(delta):
 		follow_player(delta)
 
 func set_enemy_name() -> void:
-	var enemy_names = ["Goblin", "Hound"]
-	enemy_name = enemy_names[randi() % enemy_names.size()]
+	var enemy_names = ["Goblin", "Wolf"]
+	name = enemy_names[randi() % enemy_names.size()]
 	resize_detection_range()
 	
 func resize_detection_range() -> void:
-	match(enemy_name): #Resizes the DetectionRange node based on enemy name. Should change image of the enemy too.
+	match(name): #Resizes the DetectionRange node based on enemy name. Should change image of the enemy too.
 		"Goblin":
 			detection_range.shape.size = Vector2(400, 400) 
 			speed = 300.0
-		"Hound":
+		"Wolf":
 			detection_range.shape.size = Vector2(800, 800)
 			speed = 500.0
 
