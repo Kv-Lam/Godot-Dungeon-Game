@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://jpwa1vj7gtse"]
 
 [ext_resource type="Script" path="res://Scenes/room_02.gd" id="1_lgxja"]
-[ext_resource type="Texture2D" path="res://Art/Dungeon_Sprite_Sheet_partial_fixed.png" id="2_8vtuy"]
+[ext_resource type="Texture2D" uid="uid://ja1kfuv4id54" path="res://Art/Dungeon_Sprite_Sheet_partial_fixed.png" id="2_8vtuy"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_10h8c"]
 tile_data = PackedInt32Array(0, 196608, 1, 524288, 196608, 1, 1048576, 196608, 1, 1572864, 196608, 1, 2097152, 196608, 1)

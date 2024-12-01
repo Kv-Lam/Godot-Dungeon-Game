@@ -2,6 +2,7 @@ class_name Player extends CharacterBody2D
 
 @onready var fight = $"../Fight"
 @onready var player_camera = $Camera2D
+@onready var animations = $AnimationPlayer
 
 
 const SPEED = 300.0
@@ -14,12 +15,23 @@ func get_input(): #Deals with 8-way movement and rotation of character.
 	if Input.is_action_pressed("sprint"): velocity *= 2 #Double speed of character when sprinting.
 	if velocity.length(): 
 		var snapped_angle = round(movement.angle() / (PI / 2)) * (PI / 2) #Makes it to where character will always rotate to one of the cardinal directions.
-		rotation = lerp_angle(rotation, snapped_angle, 1) #If there is movement, change rotation of character.
+		#rotation = lerp_angle(rotation, snapped_angle, 1) #If there is movement, change rotation of character.
 
+func _update_animation():
+	if velocity.length() == 0:
+		animations.stop()
+	else:
+		var direction = "Down"
+		if velocity.x < 0: direction = "Left"
+		elif velocity.x > 0: direction = "Right"
+		elif velocity.y < 0: direction = "Up"
+		
+		animations.play("Walk" + direction + "David")
 
 func _physics_process(_delta):
 	get_input()
 	move_and_slide()
+	_update_animation()
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		if collision and collision.get_collider() is Enemy:
