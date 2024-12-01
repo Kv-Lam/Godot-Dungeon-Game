@@ -1,6 +1,6 @@
 class_name SceneManager extends Node
 
-var player: Player
+var player: Node2D
 var scene_dir_path = "res://scenes/"
 var current
 

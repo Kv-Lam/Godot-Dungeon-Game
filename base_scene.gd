@@ -1,6 +1,6 @@
 class_name BaseScene extends Node
 
-@onready var player: Player = $Player
+@onready var player: Node2D = $Player
 
 #Checks to see if the scene_manager has an instance of the player.
 #If so, then it creates a new player in the next scene and transfers the player data.
