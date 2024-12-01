@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6uvyq"]
 size = Vector2(58, 74)
 
-[node name="Node2D" type="Node2D"]
+[node name="Room01" type="Node2D"]
 script = ExtResource("1_euni4")
 
 [node name="Player" parent="." instance=ExtResource("2_7hgpx")]

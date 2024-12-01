@@ -2,12 +2,19 @@
 
 [ext_resource type="Script" path="res://Scenes/room_02.gd" id="1_lgxja"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Room02" type="Node2D"]
 script = ExtResource("1_lgxja")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 480.0
-offset_top = 153.0
-offset_right = 539.0
-offset_bottom = 176.0
-text = "Room 2"
+offset_left = 854.0
+offset_top = 186.0
+offset_right = 913.0
+offset_bottom = 209.0
+text = "Room 2 Lable"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 462.0
+offset_top = 109.0
+offset_right = 521.0
+offset_bottom = 132.0
+text = "Room 1 trigger"
