@@ -13,6 +13,7 @@ func get_input(): #Deals with 8-way movement and rotation of character.
 	var movement = Input.get_vector("left", "right", "up", "down")
 	velocity = movement * SPEED
 	if Input.is_action_pressed("sprint"): velocity *= 2 #Double speed of character when sprinting.
+	#if Input.is_action_pressed("interact"): 
 	if velocity.length(): 
 		var snapped_angle = round(movement.angle() / (PI / 2)) * (PI / 2) #Makes it to where character will always rotate to one of the cardinal directions.
 		#rotation = lerp_angle(rotation, snapped_angle, 1) #If there is movement, change rotation of character.
