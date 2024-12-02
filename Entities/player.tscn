@@ -1,39 +1,179 @@
-[gd_scene load_steps=5 format=3 uid="uid://6lmoa10duf85"]
+[gd_scene load_steps=13 format=3 uid="uid://6lmoa10duf85"]
 
 [ext_resource type="Script" path="res://Entities/player.gd" id="1_fl3ie"]
-[ext_resource type="Texture2D" uid="uid://4261q2tkt405" path="res://Art/Fire_Wizard_Front.png" id="2_bj5lg"]
+[ext_resource type="PackedScene" uid="uid://dwq4ypqbvobwh" path="res://scenes/fight.tscn" id="3_ooudk"]
+[ext_resource type="Texture2D" uid="uid://dutdy7tnd4nob" path="res://Art/David.png" id="3_ppkp2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iwgnj"]
-size = Vector2(58, 126)
+size = Vector2(58, 25)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_x42nc"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_bj5lg")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[sub_resource type="Animation" id="Animation_bttgs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="Animation" id="Animation_tg0co"]
+resource_name = "ScreenTransition"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_nlxhn"]
+resource_name = "ScreenTransitionFadeOut"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ocy7b"]
+resource_name = "WalkDownDavid"
+length = 1.3
+step = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.31, 0.6, 0.88),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 0), Vector2i(0, 1), Vector2i(0, 2), Vector2i(0, 3)]
+}
+
+[sub_resource type="Animation" id="Animation_etd75"]
+resource_name = "WalkLeftDavid"
+length = 1.3
+step = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.31, 0.6, 0.88),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(1, 0), Vector2i(1, 1), Vector2i(1, 2), Vector2i(1, 3)]
+}
+
+[sub_resource type="Animation" id="Animation_ieccd"]
+resource_name = "WalkRightDavid"
+length = 1.3
+step = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.31, 0.6, 0.88),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(2, 0), Vector2i(2, 1), Vector2i(2, 2), Vector2i(2, 3)]
+}
+
+[sub_resource type="Animation" id="Animation_whxuc"]
+resource_name = "WalkUpDavid"
+length = 1.3
+step = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.31, 0.6, 0.88),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(3, 0), Vector2i(3, 1), Vector2i(3, 2), Vector2i(3, 3)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_517ue"]
+_data = {
+"RESET": SubResource("Animation_bttgs"),
+"ScreenTransition": SubResource("Animation_tg0co"),
+"ScreenTransitionFadeOut": SubResource("Animation_nlxhn"),
+"WalkDownDavid": SubResource("Animation_ocy7b"),
+"WalkLeftDavid": SubResource("Animation_etd75"),
+"WalkRightDavid": SubResource("Animation_ieccd"),
+"WalkUpDavid": SubResource("Animation_whxuc")
+}
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Fight" parent="." instance=ExtResource("3_ooudk")]
+visible = false
+
+[node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(556, 317)
 collision_layer = 9
 script = ExtResource("1_fl3ie")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 0)
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture_filter = 1
+position = Vector2(-1, -1)
+texture = ExtResource("3_ppkp2")
+hframes = 4
+vframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(-1, 50.5)
 shape = SubResource("RectangleShape2D_iwgnj")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_x42nc")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.5, 0.5)
+[node name="Camera2D" type="Camera2D" parent="Player"]
+visible = false
+zoom = Vector2(1.5, 1.5)
 drag_left_margin = 0.0
 drag_top_margin = 0.0
 drag_right_margin = 0.0
 drag_bottom_margin = 0.0
 
-[node name="Player" type="Node2D" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
+libraries = {
+"": SubResource("AnimationLibrary_517ue")
+}
+
+[node name="SceneTransition" type="AnimationPlayer" parent="Player"]
+libraries = {
+"": SubResource("AnimationLibrary_517ue")
+}
+
+[node name="ColorRect" type="ColorRect" parent="Player"]
+visible = false
+offset_left = -489.0
+offset_top = -312.0
+offset_right = 494.0
+offset_bottom = 257.0
+color = Color(0, 0, 0, 0)

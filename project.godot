@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Dungeon Game"
-run/main_scene="res://Scenes/MainMenu/main_menu.tscn"
+run/main_scene="res://scenes/MainMenu/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -21,10 +21,14 @@ buses/default_bus_layout="res://Audio/default_bus_layout.tres"
 
 [autoload]
 
-SettingsManager="*res://Scenes/MainMenu/settings_manager.gd"
+SettingsManager="*res://scenes/MainMenu/settings_manager.gd"
 scene_manager="*res://SceneManager.gd"
 Exp="*res://exp.gd"
-PlayerManager="*res://Entities/player_manager.gd"
+Bard="*res://Entities/Bard.gd"
+Mage="*res://Entities/Mage.gd"
+Rogue="*res://Entities/Rogue.gd"
+Ranger="*res://Entities/Ranger.gd"
+PartyManager="*res://Entities/party_manager.gd"
 
 [display]
 
