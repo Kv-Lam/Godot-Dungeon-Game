@@ -1,6 +1,6 @@
-extends Control
+class_name enemy_template_for_fight extends Control
 
-
+var enemy_name: String
 var HP
 var ATK
 var DEF
@@ -13,7 +13,7 @@ func update_health(max_HP):
 	progress_bar.get_node("HP").text = "HP: %d/%d" % [HP, max_HP]
 
 
-func set_stats(max_HP, ATK, DEF, SPEED, texture) -> void:
+func set_stats(enemy_name: String, max_HP, ATK, DEF, SPEED, texture) -> void:
 	var ATK_label = $VBoxContainer/HBoxContainer/ATK as Label
 	var DEF_label = $VBoxContainer/HBoxContainer/DEF as Label
 	var SPEED_label = $VBoxContainer/HBoxContainer/SPEED as Label
@@ -24,6 +24,7 @@ func set_stats(max_HP, ATK, DEF, SPEED, texture) -> void:
 	self.ATK = ATK
 	self.DEF = DEF
 	self.SPEED = SPEED
+	self.enemy_name = enemy_name
 
 	update_health(max_HP)
 	progress_bar.max_value = max_HP

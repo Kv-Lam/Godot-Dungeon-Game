@@ -11,7 +11,7 @@ var defense = 10
 const dodge = 20
 var mana_stamina = 100
 var has_mana = true
-var Ability = {0 : "Spell Flux", 3 : "Void Nova", 6 : "Inferno Grasp", 9 : "Final Incantation"}
+const Ability = {0 : "Spell Flux", 3 : "Void Nova", 6 : "Inferno Grasp", 9 : "Final Incantation"}
 #Spell Flux - Calls down starlight to smite enemies or empower allies
 #Void Nova - Unleashes a burst of chaotic energy from the void
 #Inferno's Grasp - Summons a roaring flame to engulf enemies

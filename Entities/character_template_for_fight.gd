@@ -9,10 +9,9 @@ var DEF
 
 #Helper functions to use in combat.
 func update_health(HP, max_HP):
-	var progress_bar = get_node("VBoxContainer/HealthBar")
-	progress_bar.value = HP
-	progress_bar.max_value = max_HP
-	progress_bar.get_node("HP").text = "HP: %d/%d" % [HP, max_HP]
+	var HP_bar = get_node("VBoxContainer/HealthBar")
+	HP_bar.value = HP
+	HP_bar.get_node("HP").text = "HP: %d/%d" % [HP, max_HP]
 
 
 func update_DEF(DEF):
@@ -20,10 +19,10 @@ func update_DEF(DEF):
 	DEF_label.text = "DEF: %d | " % DEF
 
 
-func update_MANA_STAMINA(MANA_STAMINA, MANA_OR_STAMINA: bool):
-	var MANA_STAMINA_label = get_node("VBoxContainer/StatContainer/VBoxContainer/HBoxContainer/MANA_STAMINA")
-	if(MANA_OR_STAMINA): MANA_STAMINA_label.text = "MANA: %d" % MANA_STAMINA
-	else: MANA_STAMINA_label.text = "STA: %d | " % MANA_STAMINA
+func update_MANA_STAMINA(MANA_STAMINA, has_MANA: bool):
+	var MANA_STAMINA_bar = get_node("VBoxContainer/ManaStaminaBar")
+	if(has_MANA): MANA_STAMINA_bar.get_node("MANA_STAMINA").text = "MANA: %d" % MANA_STAMINA
+	else: MANA_STAMINA_bar.get_node("MANA_STAMINA").text = "STA: %d | " % MANA_STAMINA
 
 
 func update_SPEED(SPEED):
@@ -37,21 +36,27 @@ func update_ATK(ATK):
 
 
 #If MANA_OR_STAMINA = true, then mana. If false, then stamina.
-func set_stats(LVL, MANA_STAMINA, MANA_OR_STAMINA: bool, DODGE, HP, max_HP, ATK, DEF, SPEED, texture) -> void:
+func set_stats(LVL, MANA_STAMINA, has_MANA: bool, DODGE, HP, max_HP, ATK, DEF, SPEED, texture) -> void:
 	var LVL_label = $VBoxContainer/StatContainer/VBoxContainer/HBoxContainer/LVL as Label
 	var DODGE_label = $VBoxContainer/StatContainer/VBoxContainer/HBoxContainer/DODGE as Label
 	var texture_rect = $VBoxContainer/TextureRect as TextureRect
-	var progress_bar = get_node("VBoxContainer/HealthBar")
-
+	var MANA_STAMINA_bar = get_node("VBoxContainer/ManaStaminaBar")
+	var HP_bar = get_node("VBoxContainer/HealthBar")
+	
 	self.MANA_STAMINA = MANA_STAMINA
 	self.HP = HP
 	self.max_HP = max_HP
 	self.DEF = DEF
-
+	
+	HP_bar.max_value = max_HP
 	update_health(HP, max_HP)
 	
 	LVL_label.text = "LVL: %d | " % LVL
-	update_MANA_STAMINA(MANA_STAMINA, MANA_OR_STAMINA)
+	if not has_MANA:
+		var fill_stylebox = StyleBoxFlat.new()
+		fill_stylebox.bg_color = Color(1, 1, 0)
+		MANA_STAMINA_bar.add_theme_stylebox_override("fill", fill_stylebox)
+	update_MANA_STAMINA(MANA_STAMINA, has_MANA)
 	DODGE_label.text = "EVA: %d | " % DODGE
 	update_ATK(ATK)
 	update_DEF(DEF)
