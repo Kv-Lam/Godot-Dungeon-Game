@@ -12,8 +12,8 @@ grow_vertical = 2
 layout_mode = 0
 offset_left = 1486.0
 offset_top = 112.0
-offset_right = 1632.0
-offset_bottom = 806.0
+offset_right = 1641.0
+offset_bottom = 927.0
 theme_override_constants/separation = 20
 alignment = 1
 
