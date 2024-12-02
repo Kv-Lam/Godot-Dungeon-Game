@@ -610,20 +610,19 @@ connected_scene = "Room04"
 position = Vector2(-9, -37)
 shape = SubResource("RectangleShape2D_ejuu0")
 
-[node name="Marker2D3" type="Marker2D" parent="."]
+[node name="Room03_Entrance" type="Marker2D" parent="."]
 position = Vector2(175, -73)
 
-[node name="Marker2D2" type="Marker2D" parent="."]
+[node name="Room04_Entrance" type="Marker2D" parent="."]
 position = Vector2(795, -75)
 
-[node name="Marker2D" type="Marker2D" parent="."]
+[node name="Room01_Entrance" type="Marker2D" parent="."]
 position = Vector2(485, 166)
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
 texture_filter = 1
 tile_set = SubResource("TileSet_dqd6t")
-collision_visibility_mode = 1
 format = 2
 layer_0/name = "Layer3"
 layer_0/y_sort_enabled = true

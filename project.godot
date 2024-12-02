@@ -24,11 +24,6 @@ buses/default_bus_layout="res://Audio/default_bus_layout.tres"
 SettingsManager="*res://Scenes/MainMenu/settings_manager.gd"
 scene_manager="*res://SceneManager.gd"
 Exp="*res://exp.gd"
-Bard="*res://Entities/Bard.gd"
-Rogue="*res://Entities/Rogue.gd"
-Mage="*res://Entities/Mage.gd"
-Ranger="*res://Entities/Ranger.gd"
-PartyManager="*res://Entities/party_manager.gd"
 
 [display]
 

@@ -3,6 +3,7 @@ class_name Player extends CharacterBody2D
 @onready var fight = $"../Fight"
 @onready var player_camera = $Camera2D
 @onready var animations = $AnimationPlayer
+@onready var scene_transition_screen = $SceneTransition
 
 
 const SPEED = 300.0
@@ -35,9 +36,14 @@ func _physics_process(_delta):
 	_update_animation()
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
-		if collision and collision.get_collider() is Enemy:
-			print("Fight!")
-			enter_combat(self, collision.get_collider().name)
+		if collision:
+			if collision.get_collider() is Enemy:
+				print("Fight!")
+				enter_combat(self, collision.get_collider().name)
+			if collision.get_collider() is SceneTrigger:
+				await scene_transition_screen.play("ScreenTransition").complete
+				scene_transition_screen.play("ScreenTransitionFadeOut")
+				
 
 
 func enter_combat(player: CharacterBody2D, collided_enemy: String):
