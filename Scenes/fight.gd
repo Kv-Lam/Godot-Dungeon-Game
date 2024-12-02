@@ -10,6 +10,10 @@ extends Control
 const ENEMY_TEMPLATE_FOR_FIGHT = preload("res://Entities/enemy_template_for_fight.tscn")
 const CHARACTER_TEMPLATE_FOR_FIGHT = preload("res://Entities/character_template_for_fight.tscn")
 
+
+var entities = []
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	fight_button.pressed.connect(fight)
@@ -31,6 +35,7 @@ func open_inventory() -> void:
 
 func escape() -> void:
 	print("Escape.")
+	entities.clear()
 
 
 func set_up_fight(collided_enemy: String) -> void:
@@ -54,6 +59,11 @@ func set_up_fight(collided_enemy: String) -> void:
 		"HP": 1000, "max_HP": 1000,
 		"ATK": 25, "DEF": 10, "SPEED": 2
 	}
+	
+	const player_data = {
+		"name": "Mage", "texture": preload("res://Art/Fire_Wizard_Front.png"),
+		
+	}
 	#Add code to add the collided enemy in.
 	var num_enemies = randi() % 5
 	var enemy_instance = ENEMY_TEMPLATE_FOR_FIGHT.instantiate()
@@ -68,7 +78,8 @@ func set_up_fight(collided_enemy: String) -> void:
 				enemy_instance.set_stats(enemy_instance.get_node("VBoxContainer/HealthBar"),
 				enemy["max_HP"], enemy["ATK"], enemy["DEF"], enemy["SPEED"], enemy["texture"])
 				enemy_party_container.add_child(enemy_instance)
-		
+	entities.push_back(enemy_instance)
+	
 	for i in range(num_enemies): #Add 0-4 enemies to fight alongside the collided enemy.
 		var enemy = enemy_data[randi() % enemy_data.size()]
 		enemy_instance = ENEMY_TEMPLATE_FOR_FIGHT.instantiate()
@@ -76,4 +87,14 @@ func set_up_fight(collided_enemy: String) -> void:
 		enemy_instance.set_stats(enemy_instance.get_node("VBoxContainer/HealthBar"),
 		enemy["max_HP"], enemy["ATK"], enemy["DEF"], enemy["SPEED"], enemy["texture"])
 		
+		entities.push_back(enemy_instance)
 		enemy_party_container.add_child(enemy_instance)
+		
+	
+	entities.sort_custom(func(a, b): return a["SPEED"] > b["SPEED"]) #Sorts all the entities by speed.
+
+
+func add_characters() -> void:
+	for character in PartyManager.party:
+		var character_instance = CHARACTER_TEMPLATE_FOR_FIGHT.instantiate()
+		

@@ -1,8 +1,9 @@
-class_name Rogue extends "res://Entities/Character.gd"
+extends "res://Entities/Character.gd"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var health = 50
+	var max_health = 50
 	const speed = 60
 	var attack = 30
 	var defense = 30

@@ -117,13 +117,6 @@ size_flags_horizontal = 0
 size_flags_vertical = 8
 texture = ExtResource("2_wh34o")
 
-[node name="TextureRect4" type="TextureRect" parent="ColorRect/PlayerPartyContainier"]
-custom_minimum_size = Vector2(256, 256)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 8
-texture = ExtResource("2_wh34o")
-
 [node name="EnemyPartyContainer" type="HBoxContainer" parent="ColorRect"]
 layout_mode = 0
 offset_right = 1920.0

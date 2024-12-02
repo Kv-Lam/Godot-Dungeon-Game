@@ -1,8 +1,9 @@
-class_name Bard extends "res://Entities/Character.gd"
+extends "res://Entities/Character.gd"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var health = 100
+	var max_health = 100
 	const speed = 40
 	var attack = 20
 	var defense = 40

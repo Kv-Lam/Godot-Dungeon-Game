@@ -38,7 +38,7 @@ func follow_player(_delta):
 	# Move towards the player
 	var direction = (player.global_position - global_position).normalized()
 	velocity = direction * speed
-	move_and_slide() #I need to change the rotation like player.
+	move_and_slide() #Need to change the rotation like player
 
 # Area2D Detection Signals
 func on_body_entered_detection(body):

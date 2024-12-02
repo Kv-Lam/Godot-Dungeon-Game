@@ -1,8 +1,9 @@
-class_name Mage extends "res://Entities/Character.gd"
+extends "res://Entities/Character.gd"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var health = 60
+	var max_health = 60
 	const speed = 30
 	var attack = 30
 	var defense = 10

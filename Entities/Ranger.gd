@@ -1,8 +1,9 @@
-class_name Ranger extends "res://Entities/Character.gd"
+extends "res://Entities/Character.gd"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var health = 80
+	var max_health = 80
 	const speed = 50
 	var attack = 30
 	var defense = 30
