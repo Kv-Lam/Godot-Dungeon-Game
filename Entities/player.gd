@@ -38,7 +38,7 @@ func _physics_process(_delta):
 		var collision = get_slide_collision(i)
 		if collision:
 			if collision.get_collider() is Enemy:
-				print("Fight!")
+				#Add sceen transition
 				enter_combat(self, collision.get_collider().name)
 			if collision.get_collider() is SceneTrigger:
 				await scene_transition_screen.play("ScreenTransition").complete
@@ -50,12 +50,6 @@ func enter_combat(player: CharacterBody2D, collided_enemy: String):
 	var fight_camera = fight.get_child(1)
 	var ui_nodes: Array = fight.get_children()
 	
-	#Hide the player and make fight scene visible.
-	player.visible = false
-	player_camera.enabled = false
-	fight.visible = true  # Show combat scene
-	fight_camera.enabled = true
-	
 	#Pause the world (stop player movement, enemies, etc.).
 	for node in get_tree().current_scene.get_children():
 		if node.name != "Player":
@@ -65,6 +59,12 @@ func enter_combat(player: CharacterBody2D, collided_enemy: String):
 	
 	player.set_process(false)
 	player.set_physics_process(false)
+	
+	#Hide the player and make fight scene visible.
+	player.visible = false
+	player_camera.enabled = false
+	fight.visible = true  # Show combat scene
+	fight_camera.enabled = true
 	
 	fight.set_up_fight(collided_enemy)
 
