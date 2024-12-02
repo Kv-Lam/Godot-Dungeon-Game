@@ -1,8 +1,9 @@
 class_name BaseScene extends Node
 
-@onready var player: Player = $Player
+@onready var player: Node2D = $Player
 
-# Called when the node enters the scene tree for the first time.
+#Checks to see if the scene_manager has an instance of the player.
+#If so, then it creates a new player in the next scene and transfers the player data.
 func _ready():
 	if scene_manager.player:
 		if player:

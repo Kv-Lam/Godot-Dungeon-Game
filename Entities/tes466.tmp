@@ -1,10 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://upp2xojc2uyk"]
+[gd_scene load_steps=6 format=3 uid="uid://upp2xojc2uyk"]
 
 [ext_resource type="Texture2D" uid="uid://b45r0uea1ic5v" path="res://icon.svg" id="1_0i3a2"]
 [ext_resource type="Script" path="res://Entities/test_enemy.gd" id="1_3eagf"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wdi0j"]
-size = Vector2(128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wprve"]
 animations = [{
@@ -17,14 +14,24 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wdi0j"]
+size = Vector2(128, 128)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3163j"]
+
 [node name="TestEnemy" type="Node2D"]
 
 [node name="TestEnemy" type="CharacterBody2D" parent="."]
 position = Vector2(224, 315)
 script = ExtResource("1_3eagf")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TestEnemy"]
+sprite_frames = SubResource("SpriteFrames_wprve")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TestEnemy"]
 shape = SubResource("RectangleShape2D_wdi0j")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TestEnemy"]
-sprite_frames = SubResource("SpriteFrames_wprve")
+[node name="Area2D" type="Area2D" parent="TestEnemy"]
+
+[node name="DetectionRange" type="CollisionShape2D" parent="TestEnemy/Area2D"]
+shape = SubResource("RectangleShape2D_3163j")
