@@ -1,26 +1,14 @@
 [gd_scene load_steps=11 format=3 uid="uid://6lmoa10duf85"]
 
 [ext_resource type="Script" path="res://Entities/player.gd" id="1_fl3ie"]
-[ext_resource type="PackedScene" uid="uid://dwq4ypqbvobwh" path="res://Scenes/fight.tscn" id="3_ooudk"]
-[ext_resource type="Texture2D" uid="uid://dutdy7tnd4nob" path="res://Art/David_Sprite_Sheet_Finished.png" id="3_ppkp2"]
+[ext_resource type="PackedScene" uid="uid://dwq4ypqbvobwh" path="res://scenes/fight.tscn" id="3_ooudk"]
+[ext_resource type="Texture2D" uid="uid://dutdy7tnd4nob" path="res://Art/David.png" id="3_ppkp2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iwgnj"]
-size = Vector2(58, 64)
+size = Vector2(58, 25)
 
 [sub_resource type="Animation" id="Animation_bttgs"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2i(0, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_ocy7b"]
 resource_name = "WalkDownDavid"
@@ -110,13 +98,14 @@ collision_layer = 9
 script = ExtResource("1_fl3ie")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
+texture_filter = 1
 position = Vector2(-1, -1)
 texture = ExtResource("3_ppkp2")
 hframes = 4
 vframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(-1, 31)
+position = Vector2(-1, 50.5)
 shape = SubResource("RectangleShape2D_iwgnj")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
