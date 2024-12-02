@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://cq1xp3ndmlan0"]
 
-[ext_resource type="Script" path="res://Scenes/room_01.gd" id="1_euni4"]
+[ext_resource type="Script" path="res://scenes/room_01.gd" id="1_euni4"]
 [ext_resource type="PackedScene" uid="uid://6lmoa10duf85" path="res://Entities/player.tscn" id="2_7hgpx"]
 [ext_resource type="PackedScene" uid="uid://gqsfqf2u1rlg" path="res://SceneTrigger.tscn" id="4_dswsv"]
 [ext_resource type="Texture2D" uid="uid://ja1kfuv4id54" path="res://Art/Dungeon_Sprite_Sheet_partial_fixed.png" id="4_opsey"]

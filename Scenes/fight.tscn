@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dwq4ypqbvobwh"]
 
-[ext_resource type="Script" path="res://Scenes/fight.gd" id="1_r6qog"]
+[ext_resource type="Script" path="res://scenes/fight.gd" id="1_r6qog"]
 
 [node name="Fight" type="Control"]
 layout_mode = 3
