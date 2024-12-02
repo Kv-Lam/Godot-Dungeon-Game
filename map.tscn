@@ -5,3 +5,5 @@
 [node name="Map" type="Node2D"]
 
 [node name="TestEnemy" parent="." instance=ExtResource("2_65rdd")]
+
+[node name="Node2D" type="Node2D" parent="."]

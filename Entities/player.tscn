@@ -23,10 +23,12 @@ collision_layer = 9
 script = ExtResource("1_fl3ie")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_iwgnj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
 sprite_frames = SubResource("SpriteFrames_x42nc")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -37,3 +39,40 @@ drag_right_margin = 0.0
 drag_bottom_margin = 0.0
 
 [node name="Player" type="Node2D" parent="."]
+
+[node name="Inventory" type="Node2D" parent="."]
+
+[node name="InventoryWindow" type="Panel" parent="Inventory"]
+custom_minimum_size = Vector2(9216, 9216)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -102.0
+offset_top = -101.0
+offset_right = 102.0
+offset_bottom = 91.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="GridContainer" type="GridContainer" parent="Inventory/InventoryWindow"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -92.0
+offset_top = -88.0
+offset_right = 92.0
+offset_bottom = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 5
+
+[node name="Button" type="Button" parent="Inventory/InventoryWindow/GridContainer"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2

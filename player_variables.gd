@@ -33,7 +33,7 @@ func _process(delta: float) -> void: #Always running
 		points += 1
 		#adding to stats
 		print("Level Up an Stat: ")
-		addingStats(stat)
+		#addingStats(stat)
 	
 	
 	
