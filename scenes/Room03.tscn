@@ -598,13 +598,13 @@ layer_1/tile_data = PackedInt32Array(-1769520, 196608, 1, -1245232, 196608, 1, -
 layer_2/name = "Layer1"
 layer_2/y_sort_enabled = true
 layer_2/y_sort_origin = 200
-layer_2/tile_data = PackedInt32Array(-589808, 65536, 0, -589815, 393216, 1, -1769495, 393216, 1, -1769487, 65536, 0, -1769479, 65536, 0, -1835007, 65536, 0, -1834999, 65536, 0, -786442, 393216, 1, -786434, 458752, 1, 720897, 65536, 1, -1572855, 131072, 1)
+layer_2/tile_data = PackedInt32Array(-589808, 65536, 0, -589815, 393216, 1, -1769495, 393216, 1, -1769487, 65536, 0, -1769479, 65536, 0, -1835007, 65536, 0, -1834999, 65536, 0, -786442, 393216, 1, -786434, 458752, 1, 720897, 65536, 1, -1572855, 131072, 1, -851978, 393216, 1, -851970, 458752, 1)
 layer_3/name = "Layer0"
 layer_3/y_sort_enabled = true
 layer_3/tile_data = PackedInt32Array(10, 327680, 0, -524278, 327680, 0, 524298, 327680, 0, 524290, 327680, 0, 2, 327680, 0, -524286, 327680, 0, -458758, 327680, 0, -458766, 327680, 0, 1048578, 327680, 0, 1048586, 327680, 0, -1048566, 327680, 0, -1572854, 327680, 0, -1048574, 327680, 0, -1572862, 327680, 0, -1507334, 327680, 0, -983046, 327680, 0, -983054, 327680, 0, -1507342, 327680, 0, -458774, 327680, 0, 65530, 327680, 0, 65522, 327680, 0, 65514, 327680, 0, -983062, 327680, 0, -1507350, 327680, 0, -65518, 327680, 0)
 
-[node name="Room02_Entrance" type="Marker2D" parent="."]
-position = Vector2(175, -73)
+[node name="Room05_Entrance" type="Marker2D" parent="."]
+position = Vector2(-274, -357)
 
 [node name="SceneTrigger" parent="." instance=ExtResource("3_ni46q")]
 position = Vector2(236, -68)
@@ -615,9 +615,9 @@ position = Vector2(17, -30.5)
 shape = SubResource("RectangleShape2D_6fdyh")
 
 [node name="SceneTrigger2" parent="." instance=ExtResource("3_ni46q")]
-position = Vector2(236, -68)
+position = Vector2(81, -30)
 connected_scene = "Room05"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SceneTrigger2"]
-position = Vector2(-570, -324)
+position = Vector2(-416, -370)
 shape = SubResource("RectangleShape2D_6fdyh")

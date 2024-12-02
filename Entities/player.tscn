@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://6lmoa10duf85"]
 
 [ext_resource type="Script" path="res://Entities/player.gd" id="1_fl3ie"]
-[ext_resource type="PackedScene" uid="uid://dwq4ypqbvobwh" path="res://Scenes/fight.tscn" id="3_ooudk"]
+[ext_resource type="PackedScene" uid="uid://dwq4ypqbvobwh" path="res://scenes/fight.tscn" id="3_ooudk"]
 [ext_resource type="Texture2D" uid="uid://dutdy7tnd4nob" path="res://Art/David.png" id="3_ppkp2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iwgnj"]
