@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="Inv" load_steps=4 format=3 uid="uid://drbc0e46nanq7"]
+[gd_resource type="Resource" script_class="Inv" load_steps=6 format=3 uid="uid://drbc0e46nanq7"]
 
 [ext_resource type="Script" path="res://inventory/inventory_item.gd" id="1_b1gb1"]
-[ext_resource type="Resource" uid="uid://r7q5yjund3j5" path="res://inventory/items/example.tres" id="2_2ujxl"]
+[ext_resource type="Resource" uid="uid://r7q5yjund3j5" path="res://inventory/items/mana.tres" id="2_2ujxl"]
+[ext_resource type="Resource" uid="uid://cmo84kp52irdh" path="res://inventory/items/attack.tres" id="2_4pbi7"]
+[ext_resource type="Resource" uid="uid://ujwvk204a3du" path="res://inventory/items/health.tres" id="3_11uc0"]
 [ext_resource type="Script" path="res://inventory/inventory.gd" id="3_oodsk"]
 
 [resource]
 script = ExtResource("3_oodsk")
-items = Array[ExtResource("1_b1gb1")]([ExtResource("2_2ujxl"), null, null, ExtResource("2_2ujxl"), null, null, ExtResource("2_2ujxl"), null, null, null, null, null])
+items = Array[ExtResource("1_b1gb1")]([ExtResource("2_4pbi7"), null, null, ExtResource("3_11uc0"), null, null, ExtResource("2_2ujxl"), null, null, null, null, null])
