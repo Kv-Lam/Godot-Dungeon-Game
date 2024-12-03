@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://dp3htxkkgsyml"]
+[gd_scene load_steps=12 format=3 uid="uid://dp3htxkkgsyml"]
 
 [ext_resource type="Script" path="res://scenes/room_07.gd" id="1_tf0vv"]
 [ext_resource type="Texture2D" uid="uid://ja1kfuv4id54" path="res://Art/Dungeon_Sprite_Sheet_partial_fixed.png" id="2_37v2g"]
 [ext_resource type="PackedScene" uid="uid://gqsfqf2u1rlg" path="res://SceneTrigger.tscn" id="2_lkfib"]
+[ext_resource type="PackedScene" uid="uid://upp2xojc2uyk" path="res://Entities/enemy.tscn" id="4_22jmg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ts0hp"]
 size = Vector2(39, 184)
@@ -613,3 +614,6 @@ layer_3/tile_data = PackedInt32Array(1507381, 327680, 0, 1507373, 327680, 0, 983
 
 [node name="Room07_Entrance_Marker" type="Marker2D" parent="."]
 position = Vector2(861, 374)
+
+[node name="Enemy" parent="." instance=ExtResource("4_22jmg")]
+position = Vector2(124, 382)

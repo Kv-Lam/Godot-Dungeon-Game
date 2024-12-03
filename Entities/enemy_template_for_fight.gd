@@ -1,7 +1,6 @@
 class_name enemy_template_for_fight extends Control
 
 var enemy_name: String
-#var enemy_instance: enemy_template_for_fight = self
 var enemy_instance_button: enemy_template_target_button
 var HP
 var max_HP

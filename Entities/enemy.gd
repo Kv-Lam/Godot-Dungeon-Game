@@ -9,7 +9,7 @@ var player : Node2D = null  # Reference to the detected player
 @onready var collision_shape_body = $CollisionShape2D  # For physical collisions
 @onready var detection_range = $Area2D/DetectionRange
 @onready var sprite_2d = $Sprite2D
-
+@export var enemy_name: String = ""
 
 func _ready():
 	# Connect Area2D signals for detection
@@ -23,9 +23,13 @@ func _physics_process(delta):
 		follow_player(delta)
 
 func set_enemy_name() -> void:
-	var enemy_names = ["Goblin", "Skeleton"]
-	name = enemy_names[randi() % enemy_names.size()]
+	const enemy_names = ["Goblin", "Skeleton"]
+	if enemy_name == "":
+		name = enemy_names[randi() % enemy_names.size()]
+	else:
+		name = enemy_name
 	resize_detection_range()
+	
 	
 func resize_detection_range() -> void:
 	match(name): #Resizes the DetectionRange node based on enemy name. Should change image of the enemy too.
@@ -37,6 +41,10 @@ func resize_detection_range() -> void:
 			detection_range.shape.size = Vector2(1000, 1000)
 			speed = 300.0
 			sprite_2d.texture = preload("res://Art/SkeletonFront.png")
+		"Skeleton King":
+			detection_range.shape.size = Vector2(2000, 2000)
+			speed = 500.0
+			sprite_2d.texture = preload("res://Art/SkeletonKingFront.png")
 	
 	
 	sprite_2d.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
