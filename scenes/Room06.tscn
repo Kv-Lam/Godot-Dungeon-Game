@@ -13,9 +13,9 @@ tile_data = PackedInt32Array(0, 196608, 1, 524288, 196608, 1, 1048576, 196608, 1
 [sub_resource type="TileMapPattern" id="TileMapPattern_82pk8"]
 tile_data = PackedInt32Array(0, 196608, 1, 524288, 196608, 1, 1048576, 196608, 1, 1572864, 196608, 1, 2097152, 196608, 1, 8, 196608, 1, 524296, 196608, 1, 1048584, 196608, 1, 1572872, 196608, 1, 2097160, 196608, 1, 16, 196608, 1, 524304, 196608, 1, 1048592, 196608, 1, 1572880, 196608, 1, 2097168, 196608, 1, 23, 196608, 1, 524311, 196608, 1, 1048599, 196608, 1, 1572887, 196608, 1, 2097175, 196608, 1)
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_r7630"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_div4t"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o1ddy"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ifr6f"]
 texture = ExtResource("1_o88lx")
 texture_region_size = Vector2i(128, 128)
 1:0/0 = 0
@@ -570,8 +570,8 @@ texture_region_size = Vector2i(128, 128)
 [sub_resource type="TileSet" id="TileSet_mk0e4"]
 physics_layer_0/collision_layer = 15
 physics_layer_0/collision_mask = 15
-physics_layer_0/physics_material = SubResource("PhysicsMaterial_r7630")
-sources/0 = SubResource("TileSetAtlasSource_o1ddy")
+physics_layer_0/physics_material = SubResource("PhysicsMaterial_div4t")
+sources/0 = SubResource("TileSetAtlasSource_ifr6f")
 pattern_0 = SubResource("TileMapPattern_10h8c")
 pattern_1 = SubResource("TileMapPattern_eygpv")
 pattern_2 = SubResource("TileMapPattern_82pk8")
@@ -591,11 +591,16 @@ script = ExtResource("1_u3fha")
 [node name="Room06_Entrance_Marker" type="Marker2D" parent="."]
 position = Vector2(1797, 304)
 
+[node name="Room08_Entrance_Marker" type="Marker2D" parent="."]
+position = Vector2(1305, 1079)
+
+[node name="Room07_Entrance_Marker" type="Marker2D" parent="."]
+position = Vector2(861, 374)
+
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
 texture_filter = 1
 tile_set = SubResource("TileSet_mk0e4")
-collision_visibility_mode = 1
 format = 2
 layer_0/name = "Layer3"
 layer_0/y_sort_enabled = true

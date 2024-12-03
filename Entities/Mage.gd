@@ -3,6 +3,7 @@ extends "res://Entities/Character.gd"
 
 const texture = preload("res://Art/Fire_Wizard_Front.png")
 var level = 1
+var experience = 0
 var health = 60
 var max_health = 60
 const speed = 30

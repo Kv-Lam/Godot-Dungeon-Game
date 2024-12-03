@@ -1,12 +1,13 @@
 extends Control
 
-
-@onready var fight_button = $ColorRect/HBoxContainer/ColorRect/BottomContainer/Fight as Button
-@onready var guard_button = $ColorRect/HBoxContainer/ColorRect/BottomContainer/Guard as Button
-@onready var inventory_button = $ColorRect/HBoxContainer/ColorRect/BottomContainer/Inventory as Button
-@onready var escape_button = $ColorRect/HBoxContainer/ColorRect/BottomContainer/Escape as Button
+@onready var turn_container = $ColorRect/HBoxContainer/ColorRect/TurnContainer as HBoxContainer
+@onready var fight_button = $ColorRect/HBoxContainer/ColorRect/TurnContainer/Fight as Button
+@onready var guard_button = $ColorRect/HBoxContainer/ColorRect/TurnContainer/Guard as Button
+@onready var inventory_button = $ColorRect/HBoxContainer/ColorRect/TurnContainer/Inventory as Button
+@onready var escape_button = $ColorRect/HBoxContainer/ColorRect/TurnContainer/Escape as Button
 @onready var enemy_party_container = $ColorRect/EnemyPartyContainer as HBoxContainer
 @onready var character_party_container = $ColorRect/PlayerPartyContainier as HBoxContainer
+@onready var action_box = $ColorRect/HBoxContainer/ColorRect/VBoxContainer/ColorRect/ActionBox as RichTextLabel
 const ENEMY_TEMPLATE_FOR_FIGHT = preload("res://Entities/enemy_template_for_fight.tscn")
 const CHARACTER_TEMPLATE_FOR_FIGHT = preload("res://Entities/character_template_for_fight.tscn")
 
@@ -30,14 +31,33 @@ const boss_data = { #Separate from the others to make it to where he can't rando
 }
 
 var entities = []
-
+var pressed_button: String = ""
+var button_pressed: bool = false
+var won: bool
 
 # Called when the node enters the scene tree for the first time.
+func wait_for_button_press() -> void:
+	button_pressed = false  # Reset flag
+	pressed_button = ""
+	
+	# Wait until any button is pressed
+	while not button_pressed:
+		await get_tree().create_timer(.1).timeout  # Yield until the next frame
+	
+
+# Connect signals (for each button)
 func _ready():
-	fight_button.pressed.connect(fight)
-	guard_button.pressed.connect(guard)
-	inventory_button.pressed.connect(open_inventory)
-	escape_button.pressed.connect(escape)
+	fight_button.connect("pressed", Callable(_on_button_pressed.bind("Fight")))
+	guard_button.connect("pressed", Callable(_on_button_pressed.bind("Guard")))
+	inventory_button.connect("pressed", Callable(_on_button_pressed.bind("Inventory")))
+	escape_button.connect("pressed", Callable(_on_button_pressed.bind("Escape")))
+
+
+#Button press handler.
+func _on_button_pressed(button_name: String) -> void:
+	button_pressed = true
+	pressed_button = button_name
+
 
 func fight() -> void:
 	print("Fight.")
@@ -52,11 +72,11 @@ func open_inventory() -> void:
 
 
 func escape() -> void:
-	print("Escape.")
-	entities.clear()
-
+	pass
 
 func set_up_fight(collided_enemy: String) -> void:
+	action_box.clear()
+	randomize()
 	#Add code to add the collided enemy in.
 	var num_enemies = randi() % 5
 	var enemy_instance = ENEMY_TEMPLATE_FOR_FIGHT.instantiate()
@@ -84,6 +104,7 @@ func set_up_fight(collided_enemy: String) -> void:
 	add_characters()
 	
 	entities.sort_custom(func(a, b): return a["SPEED"] > b["SPEED"]) #Sorts all the entities by speed.
+	
 	combat()
 
 func add_characters() -> void:
@@ -97,16 +118,74 @@ func add_characters() -> void:
 
 
 func combat() -> void:
-	for entity in entities:
-		#Add a timer to wait.
-		if entity is enemy_template_for_fight:
-			print(entity.enemy_name + " attacks!") #Put this into action menu somehow.
-			var target = randi() % PartyManager.party.size()
-			PartyManager.party[target].health -= (max(entity["ATK"] - PartyManager.party[target].defense, 0))
-			#Update the HP Bar.
-			for targetted in entities:
-				if targetted["name"] == PartyManager.party[target].name:
-					targetted["instance"].update_health(PartyManager.party[target].health, PartyManager.party[target].max_health)
-			#Code for printing to action box.
-		else:
-			print(entity["name"])
+	while true:
+		for entity in entities:
+			if entity is enemy_template_for_fight:
+				await get_tree().create_timer(1.0).timeout
+				var target = randi() % PartyManager.party.size()
+				var damage = max(entity["ATK"] - PartyManager.party[target].defense, 0)
+				log_action(entity.enemy_name, "attacks the", PartyManager.party[target].name + " for " + str(damage) + "!")
+				PartyManager.party[target].health -= damage
+				#Update the HP Bar.
+				for targeted in entities:
+					if targeted["name"] == PartyManager.party[target].name:
+						targeted["instance"].update_HP(PartyManager.party[target].health, PartyManager.party[target].max_health)
+			else:
+				var player_turn = true
+				var current_player
+				
+				for player in PartyManager.party:
+					if entity.name == player.name:
+						current_player = player
+				
+				if(entity["instance"].guard):
+					entity["instance"].guard = false
+					current_player.defense = int(current_player.defense / 1.2)
+					entity["instance"].update_DEF(current_player.defense)
+				
+				turn_container.visible = true
+				log_action(entity["name"], "'s turn.")
+				
+				await wait_for_button_press()
+				while player_turn:
+					match pressed_button:
+						"Fight":
+							player_turn = false
+							
+						"Guard":
+							player_turn = false
+							entity["instance"].guard = true
+							current_player.defense = int(current_player.defense * 1.2)
+							entity["instance"].update_DEF(current_player.defense)
+						"Inventory":
+							log_action("Tried using inventory, but", "it is not implemented.")
+							await wait_for_button_press()
+						"Escape":
+							player_turn = false
+							if((randi() % 100) + (current_player.dodge / 10)) >= 50:
+								won = false
+								log_action("Successfully", "ran!")
+								await get_tree().create_timer(1.0).timeout
+								self.visible = false
+								for instance in entities:
+									if instance is enemy_template_for_fight:
+										instance.queue_free()
+									else:
+										instance["instance"].queue_free()
+								return
+							else:
+								log_action("Failed to", "run!")
+				turn_container.visible = false
+
+
+func log_action(entity_name: String, action: String, target: String = "", result: String = ""):
+	#Create a formatted message.
+	var action_message = "%s %s" % [entity_name, action]
+	if target != "":
+		action_message += " %s" % target
+	if result != "":
+		action_message += " (%s)" % result
+	
+	#Add the message to the action_box.
+	action_box.append_text("[color=yellow]%s[/color]\n" % action_message)
+	action_box.scroll_to_line(action_box.get_line_count() - 1)  #Auto-scroll to the latest message.

@@ -5,10 +5,11 @@ var MANA_STAMINA
 var HP
 var max_HP
 var DEF
+var guard = false
 
 
 #Helper functions to use in combat.
-func update_health(HP, max_HP):
+func update_HP(HP, max_HP):
 	var HP_bar = get_node("VBoxContainer/HealthBar")
 	HP_bar.value = HP
 	HP_bar.get_node("HP").text = "HP: %d/%d" % [HP, max_HP]
@@ -49,7 +50,7 @@ func set_stats(LVL, MANA_STAMINA, has_MANA: bool, DODGE, HP, max_HP, ATK, DEF, S
 	self.DEF = DEF
 	
 	HP_bar.max_value = max_HP
-	update_health(HP, max_HP)
+	update_HP(HP, max_HP)
 	
 	LVL_label.text = "LVL: %d | " % LVL
 	if not has_MANA:
