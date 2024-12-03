@@ -580,7 +580,7 @@ pattern_2 = SubResource("TileMapPattern_82pk8")
 size = Vector2(126, 97)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_et7jj"]
-size = Vector2(47.5, 230)
+size = Vector2(34.5, 230)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lptle"]
 size = Vector2(152, 64)
@@ -631,7 +631,7 @@ position = Vector2(1581, 1315)
 connected_scene = "Room09"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SceneTrigger2"]
-position = Vector2(14.75, -36)
+position = Vector2(21.25, -36)
 shape = SubResource("RectangleShape2D_et7jj")
 
 [node name="SceneTrigger3" parent="." instance=ExtResource("3_6iqmd")]
