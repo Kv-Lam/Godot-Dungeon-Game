@@ -1,7 +1,8 @@
+#Mage
 extends "res://Entities/Character.gd"
 
 
-const texture = preload("res://Art/Fire_Wizard_Front.png")
+const texture = preload("res://Art/DavidBack.png")
 var level = 1
 var experience = 0
 var health = 60

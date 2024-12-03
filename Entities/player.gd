@@ -9,6 +9,8 @@ class_name Player extends CharacterBody2D
 const SPEED = 300.0
 var health = 100
 
+@export var inv:Inv
+
 
 func get_input(): #Deals with 8-way movement and rotation of character.
 	var movement = Input.get_vector("left", "right", "up", "down")
