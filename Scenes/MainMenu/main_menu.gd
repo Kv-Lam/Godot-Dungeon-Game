@@ -1,5 +1,5 @@
 #Kevin's
-class_name MainMenu
+	class_name MainMenu
 extends Control
 
 @onready var new_game = $"MainMenuButtons/New Game" as Button
