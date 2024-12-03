@@ -8,4 +8,4 @@
 
 [resource]
 script = ExtResource("3_oodsk")
-items = Array[ExtResource("1_b1gb1")]([ExtResource("2_4pbi7"), null, null, ExtResource("3_11uc0"), null, null, ExtResource("2_2ujxl"), null, null, null, null, null])
+items = Array[ExtResource("1_b1gb1")]([ExtResource("2_4pbi7"), ExtResource("3_11uc0"), ExtResource("2_2ujxl"), ExtResource("2_4pbi7"), ExtResource("3_11uc0"), ExtResource("2_2ujxl"), ExtResource("2_4pbi7"), ExtResource("2_2ujxl"), ExtResource("3_11uc0"), ExtResource("2_4pbi7"), ExtResource("2_2ujxl"), ExtResource("3_11uc0")])
