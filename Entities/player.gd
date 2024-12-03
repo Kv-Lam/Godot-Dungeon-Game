@@ -69,34 +69,6 @@ func enter_combat(player: CharacterBody2D, collided_enemy: String):
 	fight_camera.enabled = true
 	
 	fight.set_up_fight(collided_enemy)
-
-
-func saveObject() -> Dictionary:
-	return {
-		"filepath": get_path(),
-		"level": self.level,
-		"health": self.health,
-		"max_health": self.max_health,
-		"attack": self.attack,
-		"defense": self.defense,
-		"mana_stamina": self.mana_stamina,
-		"has_mana": self.has_mana,
-		"position": self.global_position,
-		"velocity": self.velocity
-	}
-
-
-func loadObject(data: Dictionary) -> void:
-	self.level = data.get("level", 1) #Restore the level, default to 1
-	self.health = data.get("health", 100)  # Restore health, default to 100 if missing
-	self.max_health = data.get("max_health", 100) #Restore max health, default to 100
-	self.attack = data.get("attack", 30) #Restore attack ability, default to 30
-	self.defense = data.get("defense", 30) #Restore defense ability, default to 30
-	self.mana_stamina = data.get("mana_stamina", 100) #Resotre mana stamina, default to 100
-	self.has_mana = data.get("has_mana", false) #Restore if they have mana, default to no
-	self.global_position = data.get("position", Vector2.ZERO)  # Restore position
-	self.velocity = data.get("velocity", Vector2.ZERO)  # Restore velocity
-	
 	
 	# Ensure the UI remains interactive
 	#for ui_node in ui_nodes:
