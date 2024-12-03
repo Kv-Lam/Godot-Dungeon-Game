@@ -23,7 +23,7 @@ func update_DEF(DEF):
 func update_MANA_STAMINA(MANA_STAMINA, has_MANA: bool):
 	var MANA_STAMINA_bar = get_node("VBoxContainer/ManaStaminaBar")
 	if(has_MANA): MANA_STAMINA_bar.get_node("MANA_STAMINA").text = "MANA: %d" % MANA_STAMINA
-	else: MANA_STAMINA_bar.get_node("MANA_STAMINA").text = "STA: %d | " % MANA_STAMINA
+	else: MANA_STAMINA_bar.get_node("MANA_STAMINA").text = "STA: %d" % MANA_STAMINA
 
 
 func update_SPEED(SPEED):

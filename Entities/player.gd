@@ -1,6 +1,7 @@
 class_name Player extends CharacterBody2D
 
 @onready var fight = $"../Fight"
+@onready var fight_camera = $"../Fight/Camera2D"
 @onready var player_camera = $Camera2D
 @onready var animations = $AnimationPlayer
 @onready var scene_transition_screen = $SceneTransition
@@ -8,6 +9,7 @@ class_name Player extends CharacterBody2D
 
 const SPEED = 300.0
 var health = 100
+var allow_collisions: bool = true
 
 @export var inv:Inv
 
@@ -39,18 +41,19 @@ func _physics_process(_delta):
 	for i in get_slide_collision_count():
 		var collision = get_slide_collision(i)
 		if collision:
-			if collision.get_collider() is Enemy:
+			if allow_collisions and collision.get_collider() is Enemy:
 				#Add sceen transition
-				enter_combat(self, collision.get_collider().name)
+				await get_tree().process_frame
+				enter_combat(self, collision)
 			if collision.get_collider() is SceneTrigger:
 				await scene_transition_screen.play("ScreenTransition").complete
 				scene_transition_screen.play("ScreenTransitionFadeOut")
 				
 
 
-func enter_combat(player: CharacterBody2D, collided_enemy: String):
-	var fight_camera = fight.get_child(1)
-	var ui_nodes: Array = fight.get_children()
+func enter_combat(player: CharacterBody2D, enemy_to_free):
+	#var fight_camera = fight.get_child(1)
+	var collided_enemy: String = enemy_to_free.get_collider().name
 	
 	#Pause the world (stop player movement, enemies, etc.).
 	for node in get_tree().current_scene.get_children():
@@ -59,16 +62,54 @@ func enter_combat(player: CharacterBody2D, collided_enemy: String):
 			node.set_process(false)
 			node.set_physics_process(false)
 	
-	player.set_process(false)
-	player.set_physics_process(false)
+	#player.set_process(false)
+	#player.set_physics_process(false)
+	set_player_processes(player, false)
 	
 	#Hide the player and make fight scene visible.
-	player.visible = false
-	player_camera.enabled = false
-	fight.visible = true  # Show combat scene
-	fight_camera.enabled = true
+	set_visibilities(player, true)
 	
 	fight.set_up_fight(collided_enemy)
+	await fight.done
+	if fight.won:
+		print("Won.")
+		set_visibilities(player, false)
+		enemy_to_free.get_collider().queue_free()
+		for node in get_tree().current_scene.get_children():
+			if node.name != "Player":
+				node.set_process(true)
+				node.set_physics_process(true)
+		set_player_processes(player, true)
+	elif PartyManager.party.size() == 0: #Might not need this if I just change sacene.
+		print("Party wiped.")
+		set_visibilities(player, false)
+	else: #Ran from fight.
+		print("Ran.")
+		allow_collisions = false
+		set_visibilities(player, false)
+		for node in get_tree().current_scene.get_children():
+			if node.name != "Player": node.visible = true
+		set_player_processes(player, true)
+		await get_tree().create_timer(3).timeout
+		allow_collisions = true
+		for node in get_tree().current_scene.get_children():
+			if node.name != "Player":
+				node.set_process(true)
+				node.set_physics_process(true)
+		
+
+
+func set_player_processes(player: CharacterBody2D, state: bool):
+	player.set_process(state)
+	player.set_physics_process(state)
+
+
+func set_visibilities(player: CharacterBody2D, in_combat: bool) -> void: #If in_combat = true, make fight.visble = true
+	player.visible = not in_combat
+	player_camera.enabled = not in_combat
+	fight.visible = in_combat
+	fight_camera.enabled = in_combat
+	
 
 
 func saveObject() -> Dictionary:
@@ -96,9 +137,3 @@ func loadObject(data: Dictionary) -> void:
 	self.has_mana = data.get("has_mana", false) #Restore if they have mana, default to no
 	self.global_position = data.get("position", Vector2.ZERO)  # Restore position
 	self.velocity = data.get("velocity", Vector2.ZERO)  # Restore velocity
-	
-	
-	# Ensure the UI remains interactive
-	#for ui_node in ui_nodes:
-		#ui_node.set_process(true)  # Keep UI active (buttons, menus, etc.)
-		#ui_node.set_physics_process(false)  # Disable physics, only need process for interaction

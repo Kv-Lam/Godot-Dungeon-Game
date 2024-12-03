@@ -12,18 +12,18 @@ extends Control
 const ENEMY_TEMPLATE_FOR_FIGHT = preload("res://Entities/enemy_template_for_fight.tscn")
 const CHARACTER_TEMPLATE_FOR_FIGHT = preload("res://Entities/character_template_for_fight.tscn")
 const ENEMY_TEMPLATE_TARGET_BUTTON = preload("res://enemy_template_target_button.tscn")
-
+signal done #I learned about this too late... Could've used these for detecting a button press.
 
 const enemy_data = [
 		{
 			"name": "Goblin",
 			"texture": preload("res://Art/GoblinFront.png"),
-			"HP": 100, "ATK": 45, "DEF": 2, "SPEED": 40
+			"HP": 50, "ATK": 45, "DEF": 2, "SPEED": 40
 		},
 		{
 			"name": "Skeleton",
 			"texture": preload("res://Art/SkeletonFront.png"),
-			"HP": 150, "ATK": 50, "DEF": 5, "SPEED": 50
+			"HP": 100, "ATK": 50, "DEF": 5, "SPEED": 50
 		}
 	]
 
@@ -46,7 +46,8 @@ func wait_for_button_press() -> void:
 	
 	# Wait until any button is pressed
 	while not button_pressed:
-		await get_tree().create_timer(.1).timeout  # Yield until the next frame
+		#await get_tree().process_frame  # Yield until the next frame
+		await get_tree().create_timer(.1).timeout
 	
 
 # Connect signals (for each button)
@@ -80,7 +81,7 @@ func set_up_fight(collided_enemy: String) -> void:
 	action_box.clear()
 	randomize()
 	#Add code to add the collided enemy in.
-	var num_enemies = randi() % 5
+	var num_enemies = randi() % 4
 	var enemy_instance = ENEMY_TEMPLATE_FOR_FIGHT.instantiate()
 	var enemy_button_instance = ENEMY_TEMPLATE_TARGET_BUTTON.instantiate()
 	
@@ -121,6 +122,8 @@ func set_up_fight(collided_enemy: String) -> void:
 	entities.sort_custom(func(a, b): return a["SPEED"] > b["SPEED"]) #Sorts all the entities by speed.
 	
 	combat()
+	await done
+	done.emit()
 
 
 func add_characters() -> void:
@@ -138,13 +141,6 @@ func combat() -> void:
 		for entity in entities:
 			await get_tree().create_timer(1.5).timeout
 			if entity is enemy_template_for_fight:
-				if PartyManager.party.size() == 0:
-					won = false
-					self.visible = false
-					for enemy in entities:
-						enemy.queue_free()
-					return #Maybe change scene to a game over screen.
-				
 				#Enemy attacks a random character.
 				await get_tree().create_timer(1.5).timeout
 				var target_index = randi() % PartyManager.party.size()
@@ -161,9 +157,14 @@ func combat() -> void:
 							targeted["instance"].queue_free()
 							entities.pop_at(entities.find(targeted))
 							PartyManager.party.pop_at(target_index)
-							#if entities.size() == PartyManager.party.size():
-								#won = true
-								#print(entities.size())
+							if PartyManager.party.size() == 0:
+								won = false
+								self.visible = false
+								for enemy in entities:
+									enemy.queue_free()
+								entities.clear()
+								done.emit()
+								return #Maybe change scene to a game over screen instead of emiting.
 							break
 			else:
 				var player_turn = true
@@ -208,9 +209,11 @@ func combat() -> void:
 									enemy_instance_targeted.queue_free()
 									if entities.size() == PartyManager.party.size():
 										won = true
-										self.hide()
+										self.visible = false
 										for character in entities:
 											character["instance"].queue_free()
+										entities.clear()
+										done.emit()
 										return
 							#Add an await maybe?
 						"Guard":
@@ -229,12 +232,15 @@ func combat() -> void:
 								won = false
 								log_action("Successfully", "ran!")
 								await get_tree().create_timer(1.0).timeout
-								self.visible = false
+								self.hide()
 								for instance in entities:
 									if instance is enemy_template_for_fight:
+										instance.enemy_instance_button.queue_free()
 										instance.queue_free()
 									else:
 										instance["instance"].queue_free()
+								entities.clear()
+								done.emit()
 								return
 							else:
 								log_action("Failed to", "run!")
