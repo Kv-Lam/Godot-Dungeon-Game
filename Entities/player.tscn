@@ -1,13 +1,13 @@
 [gd_scene load_steps=15 format=3 uid="uid://6lmoa10duf85"]
 
 [ext_resource type="Script" path="res://Entities/player.gd" id="1_fl3ie"]
-[ext_resource type="PackedScene" uid="uid://dwq4ypqbvobwh" path="res://Scenes/fight.tscn" id="3_ooudk"]
+[ext_resource type="PackedScene" uid="uid://dwq4ypqbvobwh" path="res://scenes/fight.tscn" id="3_ooudk"]
 [ext_resource type="Texture2D" uid="uid://dutdy7tnd4nob" path="res://Art/David.png" id="3_ppkp2"]
 [ext_resource type="Resource" uid="uid://drbc0e46nanq7" path="res://inventory/playerinv.tres" id="3_rldq4"]
 [ext_resource type="PackedScene" uid="uid://d03rfunoi70jb" path="res://inventory/inv_ui.tscn" id="5_8n3j6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iwgnj"]
-size = Vector2(58, 25)
+size = Vector2(57, 25)
 
 [sub_resource type="Animation" id="Animation_bttgs"]
 length = 0.001
@@ -152,7 +152,7 @@ hframes = 4
 vframes = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(-1, 50.5)
+position = Vector2(-1.5, 50.5)
 shape = SubResource("RectangleShape2D_iwgnj")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]

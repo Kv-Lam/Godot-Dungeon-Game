@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://df1cb2ljitpkn"]
+[gd_scene load_steps=12 format=3 uid="uid://df1cb2ljitpkn"]
 
 [ext_resource type="Script" path="res://scenes/room_11.gd" id="1_5jwtk"]
 [ext_resource type="Texture2D" uid="uid://ja1kfuv4id54" path="res://Art/Dungeon_Sprite_Sheet_partial_fixed.png" id="1_atrng"]
 [ext_resource type="PackedScene" uid="uid://gqsfqf2u1rlg" path="res://SceneTrigger.tscn" id="3_aeay3"]
+[ext_resource type="PackedScene" uid="uid://upp2xojc2uyk" path="res://Entities/enemy.tscn" id="4_20d7g"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_10h8c"]
 tile_data = PackedInt32Array(0, 196608, 1, 524288, 196608, 1, 1048576, 196608, 1, 1572864, 196608, 1, 2097152, 196608, 1)
@@ -613,3 +614,7 @@ connected_scene = "Room10"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SceneTrigger"]
 position = Vector2(50.5, -5)
 shape = SubResource("RectangleShape2D_nhsym")
+
+[node name="Enemy" parent="." instance=ExtResource("4_20d7g")]
+position = Vector2(-738, 2258)
+enemy_name = "Skeleton King"

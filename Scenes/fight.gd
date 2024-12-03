@@ -28,8 +28,8 @@ const enemy_data = [
 	]
 
 const boss_data = { #Separate from the others to make it to where he can't randomly be put into the fight.
-		"name": "Skeleton King", "texture": preload("res://Art/Main_Menu_Background.png"),
-		"HP": 1000, "ATK": 25, "DEF": 10, "SPEED": 2
+		"name": "Skeleton King", "texture": preload("res://Art/SkeletonKingFront.png"),
+		"HP": 300, "ATK": 50, "DEF": 10, "SPEED": 2
 }
 
 var entities = []
@@ -46,9 +46,8 @@ func wait_for_button_press() -> void:
 	
 	# Wait until any button is pressed
 	while not button_pressed:
-		#await get_tree().process_frame  # Yield until the next frame
-		await get_tree().create_timer(.1).timeout
-	
+		await get_tree().process_frame  # Yield until the next frame
+
 
 # Connect signals (for each button)
 func _ready():
@@ -70,7 +69,7 @@ func wait_for_enemy_target_button_press() -> void:
 	
 	# Wait until any button is pressed
 	while not enemy_button_pressed:
-		await get_tree().create_timer(.1).timeout  # Yield until the next frame
+		await get_tree().process_frame  # Yield until the next frame
 
 
 func _on_enemy_target_button_pressed(enemy_instance) -> void:
@@ -81,7 +80,7 @@ func set_up_fight(collided_enemy: String) -> void:
 	action_box.clear()
 	randomize()
 	#Add code to add the collided enemy in.
-	var num_enemies = randi() % 4
+	var num_enemies
 	var enemy_instance = ENEMY_TEMPLATE_FOR_FIGHT.instantiate()
 	var enemy_button_instance = ENEMY_TEMPLATE_TARGET_BUTTON.instantiate()
 	
@@ -89,11 +88,13 @@ func set_up_fight(collided_enemy: String) -> void:
 	target_enemy_container.add_child(enemy_button_instance)
 	
 	if collided_enemy == boss_data["name"]:
+		num_enemies = 0
 		enemy_instance.set_stats(boss_data["name"], boss_data["HP"],
 		boss_data["ATK"], boss_data["DEF"], boss_data["SPEED"], boss_data["texture"], enemy_button_instance)
 		enemy_button_instance.set_enemy_target_button_text(boss_data["name"])
 
 	else:
+		num_enemies = randi() % 4
 		for enemy in enemy_data:
 			if enemy["name"] == collided_enemy:
 				enemy_instance.set_stats(enemy["name"], enemy["HP"], enemy["ATK"], enemy["DEF"], enemy["SPEED"], enemy["texture"], enemy_button_instance)
@@ -180,7 +181,7 @@ func combat() -> void:
 					entity["instance"].update_DEF(current_player.defense)
 				
 				turn_container.visible = true
-				log_action(entity["name"], "'s turn.")
+				log_action(entity["name"] + "'s", "turn.")
 				
 				await wait_for_button_press()
 				while player_turn:
@@ -215,7 +216,6 @@ func combat() -> void:
 										entities.clear()
 										done.emit()
 										return
-							#Add an await maybe?
 						"Guard":
 							player_turn = false
 							entity["instance"].guard = true
