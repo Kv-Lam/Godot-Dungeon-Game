@@ -1,7 +1,8 @@
+#Bard
 extends "res://Entities/Character.gd"
 
 # Called when the node enters the scene tree for the first time.
-const texture = preload("res://Art/Fire_Wizard_Front.png")
+const texture = preload("res://Art/SeanBack.png")
 var level = 1
 var experience = 0
 var health = 100

@@ -1,18 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://upp2xojc2uyk"]
+[gd_scene load_steps=5 format=3 uid="uid://upp2xojc2uyk"]
 
-[ext_resource type="Texture2D" uid="uid://b45r0uea1ic5v" path="res://icon.svg" id="1_0i3a2"]
 [ext_resource type="Script" path="res://Entities/enemy.gd" id="1_3eagf"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_wprve"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_0i3a2")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="Texture2D" uid="uid://jq02d515n5mq" path="res://Art/GoblinFront.png" id="2_gniwk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wdi0j"]
 size = Vector2(128, 128)
@@ -25,8 +14,9 @@ position = Vector2(224, 315)
 scale = Vector2(0.6, 0.6)
 script = ExtResource("1_3eagf")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_wprve")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_gniwk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_wdi0j")

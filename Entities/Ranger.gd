@@ -1,14 +1,15 @@
+#Ranger
 extends "res://Entities/Character.gd"
 
 
-const texture = preload("res://Art/Fire_Wizard_Front.png")
+const texture = preload("res://Art/MinhBack.png")
 var level = 1
 var experience = 0
 var health = 80
 var max_health = 80
 const speed = 50
 var attack = 30
-var defense = 30
+var defense = 20
 const dodge = 60
 var mana_stamina = 100
 var has_mana = false

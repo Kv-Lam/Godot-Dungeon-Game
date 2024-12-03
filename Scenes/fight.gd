@@ -8,20 +8,22 @@ extends Control
 @onready var enemy_party_container = $ColorRect/EnemyPartyContainer as HBoxContainer
 @onready var character_party_container = $ColorRect/PlayerPartyContainier as HBoxContainer
 @onready var action_box = $ColorRect/HBoxContainer/ColorRect/VBoxContainer/ColorRect/ActionBox as RichTextLabel
+@onready var target_enemy_container = $ColorRect/HBoxContainer/ColorRect/TargetEnemyContainer as HBoxContainer
 const ENEMY_TEMPLATE_FOR_FIGHT = preload("res://Entities/enemy_template_for_fight.tscn")
 const CHARACTER_TEMPLATE_FOR_FIGHT = preload("res://Entities/character_template_for_fight.tscn")
+const ENEMY_TEMPLATE_TARGET_BUTTON = preload("res://enemy_template_target_button.tscn")
 
 
 const enemy_data = [
 		{
 			"name": "Goblin",
-			"texture": preload("res://icon.svg"),
-			"HP": 100, "ATK": 50, "DEF": 2, "SPEED": 40
+			"texture": preload("res://Art/GoblinFront.png"),
+			"HP": 100, "ATK": 45, "DEF": 2, "SPEED": 40
 		},
 		{
-			"name": "Wolf",
-			"texture": preload("res://Art/Fire_Wizard_Front.png"),
-			"HP": 150, "ATK": 60, "DEF": 5, "SPEED": 50
+			"name": "Skeleton",
+			"texture": preload("res://Art/SkeletonFront.png"),
+			"HP": 150, "ATK": 50, "DEF": 5, "SPEED": 50
 		}
 	]
 
@@ -33,6 +35,8 @@ const boss_data = { #Separate from the others to make it to where he can't rando
 var entities = []
 var pressed_button: String = ""
 var button_pressed: bool = false
+var enemy_button_pressed: bool = false
+var enemy_instance_targeted: enemy_template_for_fight
 var won: bool
 
 # Called when the node enters the scene tree for the first time.
@@ -59,20 +63,18 @@ func _on_button_pressed(button_name: String) -> void:
 	pressed_button = button_name
 
 
-func fight() -> void:
-	print("Fight.")
+func wait_for_enemy_target_button_press() -> void:
+	enemy_button_pressed = false  # Reset flag
+	enemy_instance_targeted = null
+	
+	# Wait until any button is pressed
+	while not enemy_button_pressed:
+		await get_tree().create_timer(.1).timeout  # Yield until the next frame
 
 
-func guard() -> void:
-	print("Guard.")
-
-
-func open_inventory() -> void:
-	print("Open Inventory.")
-
-
-func escape() -> void:
-	pass
+func _on_enemy_target_button_pressed(enemy_instance) -> void:
+	enemy_button_pressed = true
+	enemy_instance_targeted = enemy_instance
 
 func set_up_fight(collided_enemy: String) -> void:
 	action_box.clear()
@@ -80,32 +82,46 @@ func set_up_fight(collided_enemy: String) -> void:
 	#Add code to add the collided enemy in.
 	var num_enemies = randi() % 5
 	var enemy_instance = ENEMY_TEMPLATE_FOR_FIGHT.instantiate()
+	var enemy_button_instance = ENEMY_TEMPLATE_TARGET_BUTTON.instantiate()
+	
+	enemy_button_instance.get_node("Button").connect("pressed", Callable(_on_enemy_target_button_pressed.bind(enemy_instance)))
+	target_enemy_container.add_child(enemy_button_instance)
 	
 	if collided_enemy == boss_data["name"]:
 		enemy_instance.set_stats(boss_data["name"], boss_data["HP"],
-		boss_data["ATK"], boss_data["DEF"], boss_data["SPEED"], boss_data["texture"])
-		enemy_party_container.add_child(enemy_instance)
+		boss_data["ATK"], boss_data["DEF"], boss_data["SPEED"], boss_data["texture"], enemy_button_instance)
+		enemy_button_instance.set_enemy_target_button_text(boss_data["name"])
+
 	else:
 		for enemy in enemy_data:
 			if enemy["name"] == collided_enemy:
-				enemy_instance.set_stats(enemy["name"], enemy["HP"], enemy["ATK"], enemy["DEF"], enemy["SPEED"], enemy["texture"])
-				enemy_party_container.add_child(enemy_instance)
+				enemy_instance.set_stats(enemy["name"], enemy["HP"], enemy["ATK"], enemy["DEF"], enemy["SPEED"], enemy["texture"], enemy_button_instance)
+				enemy_button_instance.set_enemy_target_button_text(enemy["name"])
+		
+	enemy_party_container.add_child(enemy_instance)
 	entities.push_back(enemy_instance)
 	
 	for i in range(num_enemies): #Add 0-4 enemies to fight alongside the collided enemy.
 		var enemy = enemy_data[randi() % enemy_data.size()]
 		enemy_instance = ENEMY_TEMPLATE_FOR_FIGHT.instantiate()
+		enemy_button_instance = ENEMY_TEMPLATE_TARGET_BUTTON.instantiate()
 		
-		enemy_instance.set_stats(enemy["name"], enemy["HP"], enemy["ATK"], enemy["DEF"], enemy["SPEED"], enemy["texture"])
+		enemy_button_instance.set_enemy_target_button_text(enemy["name"])
+		enemy_button_instance.get_node("Button").connect("pressed", Callable(_on_enemy_target_button_pressed.bind(enemy_instance)))
+		target_enemy_container.add_child(enemy_button_instance)
+		
+		enemy_instance.set_stats(enemy["name"], enemy["HP"], enemy["ATK"], enemy["DEF"], enemy["SPEED"], enemy["texture"], enemy_button_instance)
 		
 		entities.push_back(enemy_instance)
 		enemy_party_container.add_child(enemy_instance)
 		
+
 	add_characters()
 	
 	entities.sort_custom(func(a, b): return a["SPEED"] > b["SPEED"]) #Sorts all the entities by speed.
 	
 	combat()
+
 
 func add_characters() -> void:
 	for character in PartyManager.party:
@@ -120,16 +136,35 @@ func add_characters() -> void:
 func combat() -> void:
 	while true:
 		for entity in entities:
+			await get_tree().create_timer(1.5).timeout
 			if entity is enemy_template_for_fight:
-				await get_tree().create_timer(1.0).timeout
-				var target = randi() % PartyManager.party.size()
-				var damage = max(entity["ATK"] - PartyManager.party[target].defense, 0)
-				log_action(entity.enemy_name, "attacks the", PartyManager.party[target].name + " for " + str(damage) + "!")
-				PartyManager.party[target].health -= damage
+				if PartyManager.party.size() == 0:
+					won = false
+					self.visible = false
+					for enemy in entities:
+						enemy.queue_free()
+					return #Maybe change scene to a game over screen.
+				
+				#Enemy attacks a random character.
+				await get_tree().create_timer(1.5).timeout
+				var target_index = randi() % PartyManager.party.size()
+				var target = PartyManager.party[target_index]
+				var damage = max(entity["ATK"] - target.defense, 0) #Fix up damage calculation.
+				log_action(entity.enemy_name, "attacks the", target.name + " for " + str(damage) + "!")
+				target.health -= damage
+				
 				#Update the HP Bar.
 				for targeted in entities:
-					if targeted["name"] == PartyManager.party[target].name:
-						targeted["instance"].update_HP(PartyManager.party[target].health, PartyManager.party[target].max_health)
+					if targeted["name"] == target.name:
+						targeted["instance"].update_HP(target.health, target.max_health)
+						if target.health <= 0: #Check for character death, remove if there is.
+							targeted["instance"].queue_free()
+							entities.pop_at(entities.find(targeted))
+							PartyManager.party.pop_at(target_index)
+							#if entities.size() == PartyManager.party.size():
+								#won = true
+								#print(entities.size())
+							break
 			else:
 				var player_turn = true
 				var current_player
@@ -151,11 +186,39 @@ func combat() -> void:
 					match pressed_button:
 						"Fight":
 							player_turn = false
-							
+							turn_container.visible = false
+							target_enemy_container.visible = true
+							await wait_for_enemy_target_button_press()
+							while enemy_button_pressed:
+								target_enemy_container.visible = false
+								enemy_button_pressed = false
+								var damage = max(current_player.attack - enemy_instance_targeted.DEF, 0)
+								enemy_instance_targeted.HP -= damage
+								log_action(current_player.name, "attacks", enemy_instance_targeted.enemy_name, "for " + str(damage) + '!')
+								enemy_instance_targeted.update_HP()
+								if enemy_instance_targeted.HP <= 0:
+									var index = 0
+									for enemy in entities:
+										if enemy is enemy_template_for_fight:
+											if enemy == enemy_instance_targeted:
+												enemy_instance_targeted.enemy_instance_button.queue_free()
+												entities.pop_at(index)
+												break
+										index += 1
+									enemy_instance_targeted.queue_free()
+									if entities.size() == PartyManager.party.size():
+										won = true
+										self.hide()
+										for character in entities:
+											character["instance"].queue_free()
+										return
+							#Add an await maybe?
 						"Guard":
 							player_turn = false
 							entity["instance"].guard = true
-							current_player.defense = int(current_player.defense * 1.2)
+							var DEF_increase = int(current_player.defense * .2)
+							current_player.defense += DEF_increase
+							log_action(entity.name, "guards,", "raising their defense by", str(DEF_increase) + '!')
 							entity["instance"].update_DEF(current_player.defense)
 						"Inventory":
 							log_action("Tried using inventory, but", "it is not implemented.")
@@ -184,7 +247,7 @@ func log_action(entity_name: String, action: String, target: String = "", result
 	if target != "":
 		action_message += " %s" % target
 	if result != "":
-		action_message += " (%s)" % result
+		action_message += " %s" % result
 	
 	#Add the message to the action_box.
 	action_box.append_text("[color=yellow]%s[/color]\n" % action_message)
