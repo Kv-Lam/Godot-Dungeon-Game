@@ -9,9 +9,9 @@ func getXP() -> int:
 func levelUp(stat) -> int:
 	if stat >= 10:
 		print("Stat is maxed already")
-		return null
+		return 0
 	else:
-		stat++
+		stat + 1
 		return stat
 		
 		
