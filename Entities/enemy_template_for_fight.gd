@@ -7,7 +7,7 @@ var DEF
 var SPEED
 
 
-func update_health(max_HP):
+func update_HP(max_HP):
 	var progress_bar = get_node("VBoxContainer/HealthBar")
 	progress_bar.value = HP
 	progress_bar.get_node("HP").text = "HP: %d/%d" % [HP, max_HP]
@@ -26,7 +26,7 @@ func set_stats(enemy_name: String, max_HP, ATK, DEF, SPEED, texture) -> void:
 	self.SPEED = SPEED
 	self.enemy_name = enemy_name
 
-	update_health(max_HP)
+	update_HP(max_HP)
 	progress_bar.max_value = max_HP
 	ATK_label.text = "ATK: %d | " % ATK
 	DEF_label.text = "DEF: %d | " % DEF

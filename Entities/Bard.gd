@@ -3,6 +3,7 @@ extends "res://Entities/Character.gd"
 # Called when the node enters the scene tree for the first time.
 const texture = preload("res://Art/Fire_Wizard_Front.png")
 var level = 1
+var experience = 0
 var health = 100
 var max_health = 100
 const speed = 40
