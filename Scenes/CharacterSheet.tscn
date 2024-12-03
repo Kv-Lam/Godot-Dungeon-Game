@@ -1,15 +1,15 @@
 [gd_scene load_steps=14 format=3 uid="uid://cosvxmfv3q34u"]
 
-[ext_resource type="Texture2D" uid="uid://n08d7rajc62m" path="res://Art/stat background.webp" id="1_qbfk7"]
-[ext_resource type="Script" path="res://Scenes/character_level.gd" id="1_w07he"]
-[ext_resource type="Texture2D" uid="uid://4261q2tkt405" path="res://Art/Fire_Wizard_Front.png" id="3_riqqj"]
-[ext_resource type="Texture2D" uid="uid://d30y8b6tsjgqx" path="res://Art/wood background.png" id="4_e6pwu"]
-[ext_resource type="Texture2D" uid="uid://37f5wbkch8cd" path="res://Art/MINUS.png" id="5_h6o51"]
-[ext_resource type="Texture2D" uid="uid://coeuuvfdi52lh" path="res://Art/PLUS.png" id="6_dnsqc"]
-[ext_resource type="Texture2D" uid="uid://c0uigwmk3mkow" path="res://Art/PMINUS.png" id="6_qs6o5"]
-[ext_resource type="Texture2D" uid="uid://dtgmo57b5oc8j" path="res://Art/textbg.jpg" id="7_sxg4v"]
-[ext_resource type="Texture2D" uid="uid://b8qa0fo1yruuo" path="res://Art/PPLUS.png" id="8_ryx30"]
-[ext_resource type="Texture2D" uid="uid://cpbxwx84oa51" path="res://Art/Pressed.jpg" id="10_l47df"]
+[ext_resource type="Script" path="res://Scenes/character_level.gd" id="1_kg6ii"]
+[ext_resource type="Texture2D" uid="uid://n08d7rajc62m" path="res://Art/stat background.webp" id="2_um20e"]
+[ext_resource type="Texture2D" uid="uid://4261q2tkt405" path="res://Art/Fire_Wizard_Front.png" id="3_1o4tt"]
+[ext_resource type="Texture2D" uid="uid://d30y8b6tsjgqx" path="res://Art/wood background.png" id="4_2kp84"]
+[ext_resource type="Texture2D" uid="uid://37f5wbkch8cd" path="res://Art/MINUS.png" id="5_okvbs"]
+[ext_resource type="Texture2D" uid="uid://c0uigwmk3mkow" path="res://Art/PMINUS.png" id="6_78j82"]
+[ext_resource type="Texture2D" uid="uid://coeuuvfdi52lh" path="res://Art/PLUS.png" id="7_bapor"]
+[ext_resource type="Texture2D" uid="uid://b8qa0fo1yruuo" path="res://Art/PPLUS.png" id="8_3rghx"]
+[ext_resource type="Texture2D" uid="uid://dtgmo57b5oc8j" path="res://Art/textbg.jpg" id="9_ycuok"]
+[ext_resource type="Texture2D" uid="uid://cpbxwx84oa51" path="res://Art/Pressed.jpg" id="10_dasxb"]
 
 [sub_resource type="FontFile" id="FontFile_42tto"]
 cache/0/16/0/ascent = 0.0
@@ -35,7 +35,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_w07he")
+script = ExtResource("1_kg6ii")
 
 [node name="Background" type="NinePatchRect" parent="."]
 layout_mode = 1
@@ -44,7 +44,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_qbfk7")
+texture = ExtResource("2_um20e")
 region_rect = Rect2(171.917, 117.648, 676.548, 788.703)
 patch_margin_left = 10
 patch_margin_top = 10
@@ -66,7 +66,7 @@ grow_vertical = 2
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_vertical = 4
-texture = ExtResource("3_riqqj")
+texture = ExtResource("3_1o4tt")
 expand_mode = 5
 stretch_mode = 4
 
@@ -106,7 +106,7 @@ offset_right = 225.0
 offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_e6pwu")
+texture = ExtResource("4_2kp84")
 expand_mode = 3
 
 [node name="Minus" type="TextureButton" parent="HBoxContainer/VBoxContainer/HBoxContainer/MainStats/Health/StatBackground" groups=["MinButtons"]]
@@ -121,9 +121,9 @@ offset_right = 41.0
 offset_bottom = 50.0
 grow_vertical = 2
 disabled = true
-texture_normal = ExtResource("5_h6o51")
-texture_pressed = ExtResource("6_qs6o5")
-texture_disabled = ExtResource("5_h6o51")
+texture_normal = ExtResource("5_okvbs")
+texture_pressed = ExtResource("6_78j82")
+texture_disabled = ExtResource("5_okvbs")
 stretch_mode = 0
 
 [node name="Plus" type="TextureButton" parent="HBoxContainer/VBoxContainer/HBoxContainer/MainStats/Health/StatBackground" groups=["PlusButtons"]]
@@ -141,9 +141,9 @@ offset_bottom = 50.0
 grow_horizontal = 0
 grow_vertical = 2
 disabled = true
-texture_normal = ExtResource("6_dnsqc")
-texture_pressed = ExtResource("8_ryx30")
-texture_disabled = ExtResource("6_dnsqc")
+texture_normal = ExtResource("7_bapor")
+texture_pressed = ExtResource("8_3rghx")
+texture_disabled = ExtResource("7_bapor")
 stretch_mode = 0
 
 [node name="Stat" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer/MainStats/Health/StatBackground"]
@@ -199,7 +199,7 @@ offset_right = 225.0
 offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_e6pwu")
+texture = ExtResource("4_2kp84")
 expand_mode = 3
 
 [node name="Minus" type="TextureButton" parent="HBoxContainer/VBoxContainer/HBoxContainer/MainStats/Mana/StatBackground" groups=["MinButtons"]]
@@ -214,9 +214,9 @@ offset_right = 41.0
 offset_bottom = 50.0
 grow_vertical = 2
 disabled = true
-texture_normal = ExtResource("5_h6o51")
-texture_pressed = ExtResource("6_qs6o5")
-texture_disabled = ExtResource("5_h6o51")
+texture_normal = ExtResource("5_okvbs")
+texture_pressed = ExtResource("6_78j82")
+texture_disabled = ExtResource("5_okvbs")
 stretch_mode = 0
 
 [node name="Plus" type="TextureButton" parent="HBoxContainer/VBoxContainer/HBoxContainer/MainStats/Mana/StatBackground" groups=["PlusButtons"]]
@@ -234,9 +234,9 @@ offset_bottom = 50.0
 grow_horizontal = 0
 grow_vertical = 2
 disabled = true
-texture_normal = ExtResource("6_dnsqc")
-texture_pressed = ExtResource("8_ryx30")
-texture_disabled = ExtResource("6_dnsqc")
+texture_normal = ExtResource("7_bapor")
+texture_pressed = ExtResource("8_3rghx")
+texture_disabled = ExtResource("7_bapor")
 stretch_mode = 0
 
 [node name="Stat" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer/MainStats/Mana/StatBackground"]
@@ -292,7 +292,7 @@ offset_right = 225.0
 offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_e6pwu")
+texture = ExtResource("4_2kp84")
 expand_mode = 3
 
 [node name="Minus" type="TextureButton" parent="HBoxContainer/VBoxContainer/HBoxContainer/MainStats/Attack/StatBackground" groups=["MinButtons"]]
@@ -307,9 +307,9 @@ offset_right = 41.0
 offset_bottom = 50.0
 grow_vertical = 2
 disabled = true
-texture_normal = ExtResource("5_h6o51")
-texture_pressed = ExtResource("6_qs6o5")
-texture_disabled = ExtResource("5_h6o51")
+texture_normal = ExtResource("5_okvbs")
+texture_pressed = ExtResource("6_78j82")
+texture_disabled = ExtResource("5_okvbs")
 stretch_mode = 0
 
 [node name="Plus" type="TextureButton" parent="HBoxContainer/VBoxContainer/HBoxContainer/MainStats/Attack/StatBackground" groups=["PlusButtons"]]
@@ -327,9 +327,9 @@ offset_bottom = 50.0
 grow_horizontal = 0
 grow_vertical = 2
 disabled = true
-texture_normal = ExtResource("6_dnsqc")
-texture_pressed = ExtResource("8_ryx30")
-texture_disabled = ExtResource("6_dnsqc")
+texture_normal = ExtResource("7_bapor")
+texture_pressed = ExtResource("8_3rghx")
+texture_disabled = ExtResource("7_bapor")
 stretch_mode = 0
 
 [node name="Stat" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer/MainStats/Attack/StatBackground"]
@@ -385,7 +385,7 @@ offset_right = 225.0
 offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_e6pwu")
+texture = ExtResource("4_2kp84")
 expand_mode = 3
 
 [node name="Minus" type="TextureButton" parent="HBoxContainer/VBoxContainer/HBoxContainer/MainStats/Defense/StatBackground" groups=["MinButtons"]]
@@ -400,9 +400,9 @@ offset_right = 41.0
 offset_bottom = 50.0
 grow_vertical = 2
 disabled = true
-texture_normal = ExtResource("5_h6o51")
-texture_pressed = ExtResource("6_qs6o5")
-texture_disabled = ExtResource("5_h6o51")
+texture_normal = ExtResource("5_okvbs")
+texture_pressed = ExtResource("6_78j82")
+texture_disabled = ExtResource("5_okvbs")
 stretch_mode = 0
 
 [node name="Plus" type="TextureButton" parent="HBoxContainer/VBoxContainer/HBoxContainer/MainStats/Defense/StatBackground" groups=["PlusButtons"]]
@@ -420,9 +420,9 @@ offset_bottom = 50.0
 grow_horizontal = 0
 grow_vertical = 2
 disabled = true
-texture_normal = ExtResource("6_dnsqc")
-texture_pressed = ExtResource("8_ryx30")
-texture_disabled = ExtResource("6_dnsqc")
+texture_normal = ExtResource("7_bapor")
+texture_pressed = ExtResource("8_3rghx")
+texture_disabled = ExtResource("7_bapor")
 stretch_mode = 0
 
 [node name="Stat" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer/MainStats/Defense/StatBackground"]
@@ -478,7 +478,7 @@ offset_right = 225.0
 offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("4_e6pwu")
+texture = ExtResource("4_2kp84")
 expand_mode = 3
 
 [node name="Minus" type="TextureButton" parent="HBoxContainer/VBoxContainer/HBoxContainer/MainStats/Dodge/StatBackground" groups=["MinButtons"]]
@@ -493,9 +493,9 @@ offset_right = 41.0
 offset_bottom = 50.0
 grow_vertical = 2
 disabled = true
-texture_normal = ExtResource("5_h6o51")
-texture_pressed = ExtResource("6_qs6o5")
-texture_disabled = ExtResource("5_h6o51")
+texture_normal = ExtResource("5_okvbs")
+texture_pressed = ExtResource("6_78j82")
+texture_disabled = ExtResource("5_okvbs")
 stretch_mode = 0
 
 [node name="Plus" type="TextureButton" parent="HBoxContainer/VBoxContainer/HBoxContainer/MainStats/Dodge/StatBackground" groups=["PlusButtons"]]
@@ -513,9 +513,9 @@ offset_bottom = 50.0
 grow_horizontal = 0
 grow_vertical = 2
 disabled = true
-texture_normal = ExtResource("6_dnsqc")
-texture_pressed = ExtResource("8_ryx30")
-texture_disabled = ExtResource("6_dnsqc")
+texture_normal = ExtResource("7_bapor")
+texture_pressed = ExtResource("8_3rghx")
+texture_disabled = ExtResource("7_bapor")
 stretch_mode = 0
 
 [node name="Stat" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer/MainStats/Dodge/StatBackground"]
@@ -567,8 +567,8 @@ horizontal_alignment = 1
 [node name="Confirm" type="TextureButton" parent="HBoxContainer/VBoxContainer/HBoxContainer/MainStats/HBoxContainer"]
 custom_minimum_size = Vector2(350, 1)
 layout_mode = 2
-texture_normal = ExtResource("7_sxg4v")
-texture_pressed = ExtResource("10_l47df")
+texture_normal = ExtResource("9_ycuok")
+texture_pressed = ExtResource("10_dasxb")
 ignore_texture_size = true
 stretch_mode = 0
 

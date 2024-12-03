@@ -20,9 +20,15 @@ func get_input(): #Deals with 8-way movement and rotation of character.
 	if Input.is_action_pressed("sprint"): velocity = movement * (SPEED + 100.0)
 	#if Input.is_action_pressed("open_inventory"):
 	#if Input.is_action_pressed("interact"): 
+	
+	#if Input.is_action_pressed("CharacterSheet"):
+		#var character_sheet = load("res://Scenes/CharacterSheet.tscn").instance()
+		#add_child(character_sheet)
+	
 	#if velocity.length(): 
 		#var snapped_angle = round(movement.angle() / (PI / 2)) * (PI / 2) #Makes it to where character will always rotate to one of the cardinal directions.
 		#rotation = lerp_angle(rotation, snapped_angle, 1) #If there is movement, change rotation of character.
+
 
 func _update_animation():
 	if velocity.length() == 0:
