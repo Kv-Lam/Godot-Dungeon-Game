@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://r7q5yjund3j5"]
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://r7q5yjund3j5"]
 
 [ext_resource type="Script" path="res://inventory/inventory_item.gd" id="1_n4hd6"]
 [ext_resource type="Texture2D" uid="uid://jq02d515n5mq" path="res://Art/GoblinFront.png" id="2_0cs4b"]
