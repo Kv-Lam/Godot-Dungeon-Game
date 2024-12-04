@@ -4,6 +4,7 @@ var player: Node2D
 var scene_dir_path = "res://scenes/"
 var current
 
+
 #Takes the current scene, and the passed to_scene_name to send the player
 #to the correct scene.
 func change_scene(from, to_scene_name) -> void:
@@ -14,6 +15,7 @@ func change_scene(from, to_scene_name) -> void:
 	# Calls the change_scene_to_file function and provides the path to the next file.
 	# This is a deferred call so that it waits for all current scene processes to finish before executing the call.
 	get_tree().call_deferred("change_scene_to_file", full_path)
+	
 	
 	# Debug call to check if the current working scene is in fact the correct scene we wanted to switch to.
 	# Used in conjunction with the lower also commented out function.

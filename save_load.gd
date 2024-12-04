@@ -71,3 +71,4 @@ func _load() -> void:
 			
 	save_file.close() # Close File
 	print("GAME LOADED")
+	

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dmvu1eqhx3rqx"]
 
 [ext_resource type="Script" path="res://Entities/enemy_template_for_fight.gd" id="1_f61lo"]
-[ext_resource type="Texture2D" uid="uid://b45r0uea1ic5v" path="res://icon.svg" id="1_v7iuj"]
+[ext_resource type="Texture2D" uid="uid://dutdy7tnd4nob" path="res://Art/David.png" id="2_7vqig"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q4qxr"]
 bg_color = Color(0.87, 0, 0, 1)
@@ -43,7 +43,7 @@ custom_minimum_size = Vector2(256, 256)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-texture = ExtResource("1_v7iuj")
+texture = ExtResource("2_7vqig")
 
 [node name="HealthBar" type="ProgressBar" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 20)

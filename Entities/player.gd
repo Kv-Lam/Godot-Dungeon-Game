@@ -1,39 +1,42 @@
 class_name Player extends CharacterBody2D
 
+
+#Kevin's variables 5-9.
 @onready var fight = $"../Fight"
 @onready var fight_camera = $"../Fight/Camera2D"
 @onready var player_camera = $Camera2D
+const SPEED = 300.0 #Speed character walks.
+var allow_collisions: bool = true
+
+
+#Sean's variables 13-14.
 @onready var animations = $AnimationPlayer
 @onready var scene_transition_screen = $SceneTransition
 
 
-const SPEED = 300.0
 var health = 100
-var allow_collisions: bool = true
-
 @export var inv:Inv
 
-
+#Next 4 lines are Kevin's code.
 func get_input(): #Deals with 8-way movement and rotation of character.
 	var movement = Input.get_vector("left", "right", "up", "down")
 	velocity = movement * SPEED
 	if Input.is_action_pressed("sprint"): velocity = movement * (SPEED + 100.0)
+	
+	
 	#if Input.is_action_pressed("open_inventory"):
 	#if Input.is_action_pressed("interact"): 
+	
 	
 	#if Input.is_action_pressed("CharacterSheet"):
 		#var character_sheet = load("res://Scenes/CharacterSheet.tscn").instance()
 		#add_child(character_sheet)
-	
-	#if velocity.length(): 
-		#var snapped_angle = round(movement.angle() / (PI / 2)) * (PI / 2) #Makes it to where character will always rotate to one of the cardinal directions.
-		#rotation = lerp_angle(rotation, snapped_angle, 1) #If there is movement, change rotation of character.
 
-
+#Sean's function to update character animations while walking.
 func _update_animation():
-	if velocity.length() == 0:
+	if velocity.length() == 0: #If player stops moving, use idle sprite.
 		animations.stop()
-	else:
+	else: #If player is moving, play corresponding direction animation.
 		var direction = "Down"
 		if velocity.x < 0: direction = "Left"
 		elif velocity.x > 0: direction = "Right"
@@ -41,6 +44,7 @@ func _update_animation():
 		
 		animations.play("Walk" + direction + "David")
 
+#Kevin's code from 46-55.
 func _physics_process(_delta):
 	get_input()
 	move_and_slide()
@@ -49,12 +53,12 @@ func _physics_process(_delta):
 		var collision = get_slide_collision(i)
 		if collision:
 			if allow_collisions and collision.get_collider() is Enemy:
-				#Add sceen transition
 				allow_collisions = false
 				enter_combat(self, collision)
-			if collision.get_collider() is SceneTrigger:
-				await scene_transition_screen.play("ScreenTransition").complete
-				scene_transition_screen.play("ScreenTransitionFadeOut")
+			#Sean's code. Never got fully implemented.
+			#if collision.get_collider() is SceneTrigger:
+				#await scene_transition_screen.play("ScreenTransition").complete
+				#scene_transition_screen.play("ScreenTransitionFadeOut")
 				
 
 
@@ -115,7 +119,7 @@ func set_visibilities(player: CharacterBody2D, in_combat: bool) -> void: #If in_
 	fight_camera.enabled = in_combat
 	
 
-
+#David's save/load stuff. I don't know why it was in player...
 #func saveObject() -> Dictionary:
 	#return {
 		#"filepath": get_path(),

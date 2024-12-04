@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://beuwc8eiljc27"]
 
-[ext_resource type="Script" path="res://room_09.gd" id="1_shli0"]
+[ext_resource type="Script" path="res://scenes/room_09.gd" id="1_shli0"]
 [ext_resource type="Texture2D" uid="uid://ja1kfuv4id54" path="res://Art/Dungeon_Sprite_Sheet_partial_fixed.png" id="2_d4mbu"]
 [ext_resource type="PackedScene" uid="uid://gqsfqf2u1rlg" path="res://SceneTrigger.tscn" id="3_uhqrk"]
 

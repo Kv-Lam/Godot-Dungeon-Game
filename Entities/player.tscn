@@ -182,7 +182,15 @@ offset_bottom = 257.0
 color = Color(0, 0, 0, 0)
 
 [node name="Inv_UI" parent="Player" instance=ExtResource("5_8n3j6")]
+clip_contents = true
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
 offset_left = -44.0
-offset_top = -133.0
+offset_top = -135.0
 offset_right = 44.0
-offset_bottom = -69.0
+offset_bottom = -71.0
+grow_horizontal = 2
+grow_vertical = 0

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://c4jkgqn80v7ow"]
 
 [ext_resource type="Script" path="res://Entities/character_template_for_fight.gd" id="1_44hqd"]
-[ext_resource type="Texture2D" uid="uid://b45r0uea1ic5v" path="res://icon.svg" id="2_4hgut"]
+[ext_resource type="Texture2D" uid="uid://dyvanxnxf5hsa" path="res://Art/Kevin.png" id="2_oclq7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q4qxr"]
 bg_color = Color(0.87, 0, 0, 1)
@@ -138,4 +138,4 @@ custom_minimum_size = Vector2(256, 256)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-texture = ExtResource("2_4hgut")
+texture = ExtResource("2_oclq7")
