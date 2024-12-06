@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://bn1myydadq37t"]
 
-[ext_resource type="Script" path="res://save_load.gd" id="1_rv2p3"]
-[ext_resource type="Script" path="res://line_edit.gd" id="2_tofvr"]
-[ext_resource type="Script" path="res://spin_box.gd" id="3_vboxh"]
+[ext_resource type="Script" path="res://SaveLoad/save_load.gd" id="1_372qt"]
+[ext_resource type="Script" path="res://SaveLoad/line_edit.gd" id="2_kkolk"]
+[ext_resource type="Script" path="res://SaveLoad/spin_box.gd" id="3_xa01b"]
 
 [node name="SaveLoad" type="Control"]
 layout_mode = 3
@@ -14,7 +14,7 @@ offset_right = -101.0
 offset_bottom = -76.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_rv2p3")
+script = ExtResource("1_372qt")
 
 [node name="LineEdit" type="LineEdit" parent="." groups=["SaveLoad"]]
 layout_mode = 0
@@ -22,7 +22,7 @@ offset_left = 624.0
 offset_top = 216.0
 offset_right = 880.0
 offset_bottom = 287.0
-script = ExtResource("2_tofvr")
+script = ExtResource("2_kkolk")
 
 [node name="SpinBox" type="SpinBox" parent="." groups=["SaveLoad"]]
 layout_mode = 0
@@ -30,7 +30,7 @@ offset_left = 888.0
 offset_top = 216.0
 offset_right = 984.0
 offset_bottom = 287.0
-script = ExtResource("3_vboxh")
+script = ExtResource("3_xa01b")
 
 [node name="Save" type="Button" parent="."]
 layout_mode = 0

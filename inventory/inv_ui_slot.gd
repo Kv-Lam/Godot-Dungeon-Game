@@ -2,6 +2,7 @@ extends Panel
 
 @onready var item_visual: Sprite2D = $CenterContainer/Panel/item_display
 
+#Updates visibility of individual boxes
 func update(item: InvItem):
 	if !item:
 		item_visual.visible = false
