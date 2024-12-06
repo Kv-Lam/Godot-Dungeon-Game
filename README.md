@@ -3,7 +3,7 @@
 # How to run the game
 1. Install GoDot version 4.3 (Latest version
 2. Open this project with GoDot
-3. To Run Project press the key (F5)\
+3. To Run Project press the key (F5)
 
 # How to play the game
 1. Controls are WASD by default to walk around
