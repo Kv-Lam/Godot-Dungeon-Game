@@ -17,6 +17,7 @@ const Ability = {0 : "Spell Flux", 3 : "Void Nova", 6 : "Inferno Grasp", 9 : "Fi
 #Inferno's Grasp - Summons a roaring flame to engulf enemies
 #Final Incantation - A last-ditch spell that consumes the Mage's reserves for massive damage
 
+#Function to save individual stats and position during the game
 #func saveObject() -> Dictionary:
 	#return {
 		#"filepath": get_path(),
@@ -31,6 +32,7 @@ const Ability = {0 : "Spell Flux", 3 : "Void Nova", 6 : "Inferno Grasp", 9 : "Fi
 	#}
 #
 #
+#Loads all of the player stats and their position
 #func loadObject(data: Dictionary) -> void:
 	#level = data.get("level", 1) #Restore the level, default to 1
 	#health = data.get("health", 100)  # Restore health, default to 100 if missing

@@ -17,6 +17,7 @@ const Ability = {0 : "Flame Shot", 3 : "Piercing Gale", 6 : "Icy Bind", 9 : "Hai
 #Ice Bind - Freezes the Enemey causing them to lose a turn
 #Hail of Arrows - Launches a flurry of whistling arrows to rain down
 
+#Function to save individual stats and position during the game
 #func saveObject() -> Dictionary:
 	#return {
 		#"filepath": get_path(),
@@ -30,7 +31,7 @@ const Ability = {0 : "Flame Shot", 3 : "Piercing Gale", 6 : "Icy Bind", 9 : "Hai
 		#"position": self.global_position,
 	#}
 #
-#
+#Loads all of the player stats and their position
 #func loadObject(data: Dictionary) -> void:
 	#level = data.get("level", 1) #Restore the level, default to 1
 	#health = data.get("health", 100)  # Restore health, default to 100 if missing

@@ -16,6 +16,7 @@ func saveObject() -> Dictionary:
 		"savedInt": var_to_str(value)
 	}
 	return dict
-	
+
+#Loads number saved in the spinbox
 func loadObject(loadedDict: Dictionary) -> void:
 	value = str_to_var(loadedDict.savedInt)

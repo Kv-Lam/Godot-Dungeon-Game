@@ -20,6 +20,7 @@ const Ability = {0 : "Backstab Blitz", 3 : "Phantom Strike", 6 : "Vortex of Blad
 #Vortex of Blades - Spins in a flurry of daggers damaging enemies
 #Umbra Assassination - Strikes an enemy from complete stealth, instantly incapacitating them
 
+#Function to save individual stats and position during the game
 #func saveObject() -> Dictionary:
 	#return {
 		#"filepath": get_path(),
@@ -33,7 +34,7 @@ const Ability = {0 : "Backstab Blitz", 3 : "Phantom Strike", 6 : "Vortex of Blad
 		#"position": self.global_position,
 	#}
 
-
+#Loads all of the player stats and their position
 #func loadObject(data: Dictionary) -> void:
 	#level = data.get("level", 1) #Restore the level, default to 1
 	#health = data.get("health", 100)  # Restore health, default to 100 if missing

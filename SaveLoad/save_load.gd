@@ -31,7 +31,9 @@ func _on_delete_pressed() -> void:
 	$SpinBox.value = 0
 	print("GAME DELETED")
 
+#This function saves the text and the number in the spinbox
 func _save() -> void:
+	#File to save to
 	var save_file = FileAccess.open("saveFile", FileAccess.WRITE) # Open File
 	
 	# Go through every object in the Sagroup
