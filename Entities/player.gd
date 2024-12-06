@@ -61,7 +61,7 @@ func _physics_process(_delta):
 				#scene_transition_screen.play("ScreenTransitionFadeOut")
 				
 
-
+#All of Kevin's.
 func enter_combat(player: CharacterBody2D, enemy_to_free):
 	var collided_enemy: String = enemy_to_free.get_collider().name #Used to make the guaranteed enemy whatever type the player collided into.
 	
@@ -113,13 +113,13 @@ func enter_combat(player: CharacterBody2D, enemy_to_free):
 		allow_collisions = true
 
 
-#Pauses player operations so player cannot move during combat.
+#Pauses player operations so player cannot move during combat. All of Kevin's.
 func set_player_processes(player: CharacterBody2D, state: bool):
 	player.set_process(state)
 	player.set_physics_process(state)
 
 
-#Used to switch whether player and fight are visible.
+#Used to switch whether player and fight are visible. All of Kevin's.
 func set_visibilities(player: CharacterBody2D, in_combat: bool) -> void: #If in_combat = true, make fight.visble = true
 	player.visible = not in_combat
 	player_camera.enabled = not in_combat
