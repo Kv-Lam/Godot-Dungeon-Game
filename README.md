@@ -26,5 +26,5 @@ This is an isometric dungeon game with a turn-based combat system made in Godot 
 ## Contributions
 ### Sean Sullivan: Almost all the art (inventory UI was not his, but everything else and the items were), moving through rooms, moving the player instance between rooms, and creating the actual room scenes.
 ### Kevin Lam: All of the combat system, main menu, options menu, saving/loading options, enemies, party management (very little had to be done), and player movement and collision. Some character variables for combat.
-### David Cheves: 
+### David Cheves: Inventory system, save load system, saving player variables, and loading player variables
 ### Minh Cao: 
