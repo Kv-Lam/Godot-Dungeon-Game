@@ -3,8 +3,8 @@
 This is an isometric dungeon game with a turn-based combat system made in Godot using GDScript by Sean Sullivan, Kevin Lam, David Cheves, and Minh Cao.
 
 ## How to run the game
-1. Install GoDot (We used version 4.3).
-2. Open this project with GoDot.
+1. Install Godot (We used version 4.3).
+2. Open this project with Godot.
 3. To play, press Run Project on the top right of the screen or press F5.
 
 ## How to play the game:
