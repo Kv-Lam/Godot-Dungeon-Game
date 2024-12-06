@@ -20,4 +20,3 @@
 12. Escape will give you a (50% + (character's dodge stat / 10)%) to escape
 13. Keep going until you find the final boss (Skeleton King) and win by defeating him
 14. Sorry so winning screen yet just bragging rights :)
-15. 
