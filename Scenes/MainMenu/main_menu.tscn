@@ -13,11 +13,8 @@ script/source = "extends PanelContainer
 @onready var options_panel: PanelContainer = $\".\" 
 @onready var close_options: Button = $\"OptionsVContainer/OptionsHContainer/Close Options\"
 
-enum {Master, Music, SFX}
-
-# Called when the node enters the scene tree for the first time.
+#Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# Connect the \"close options\" button to exit the options menu
 	close_options.pressed.connect(exit_options)
 
 

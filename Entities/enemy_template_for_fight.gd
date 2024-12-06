@@ -9,18 +9,19 @@ var DEF
 var SPEED
 
 
+#Helper function to update HP Bar of enemy after they get attacked.
 func update_HP():
-	var progress_bar = get_node("VBoxContainer/HealthBar")
-	progress_bar.value = HP
-	progress_bar.get_node("HP").text = "HP: %d/%d" % [HP, max_HP]
+	var health_bar = get_node("VBoxContainer/HealthBar")
+	health_bar.value = HP
+	health_bar.get_node("HP").text = "HP: %d/%d" % [HP, max_HP]
 
-
+#Sets initial stats of enemy used for actual combat, setting their stat display, and setting the texture shown during combat.
 func set_stats(enemy_name: String, max_HP, ATK, DEF, SPEED, texture, enemy_instance_button: enemy_template_target_button) -> void:
 	var ATK_label = $VBoxContainer/HBoxContainer/ATK as Label
 	var DEF_label = $VBoxContainer/HBoxContainer/DEF as Label
 	var SPEED_label = $VBoxContainer/HBoxContainer/SPEED as Label
 	var texture_rect = $VBoxContainer/TextureRect as TextureRect
-	var progress_bar = get_node("VBoxContainer/HealthBar")
+	var health_bar = get_node("VBoxContainer/HealthBar")
 	
 	self.HP = max_HP
 	self.max_HP = max_HP
@@ -31,7 +32,7 @@ func set_stats(enemy_name: String, max_HP, ATK, DEF, SPEED, texture, enemy_insta
 	self.enemy_instance_button = enemy_instance_button
 
 	update_HP()
-	progress_bar.max_value = max_HP
+	health_bar.max_value = max_HP
 	ATK_label.text = "ATK: %d | " % ATK
 	DEF_label.text = "DEF: %d | " % DEF
 	SPEED_label.text = "SPEED: %d" % SPEED

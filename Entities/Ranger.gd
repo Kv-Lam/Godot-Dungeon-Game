@@ -1,16 +1,19 @@
 extends Node
 #Ranger
+
+#Kevin's variables 5-9.
 const texture = preload("res://Art/MinhBack.png")
-var level = 1
 var experience = 0
-var health = 80
+var mana_stamina = 100
 var max_health = 80
-const speed = 50
+var has_mana = false
+
+var level = 1
+var health = 80
+var speed = 50
 var attack = 30
 var defense = 20
 const dodge = 60
-var mana_stamina = 100
-var has_mana = false
 const Ability = {0 : "Flame Shot", 3 : "Piercing Gale", 6 : "Icy Bind", 9 : "Hail of Arrows"}
 #Flame Shot - Shoots a burst of firey arrows
 #Piercing Gale - Fires an arrow that travels through enemie's armor and defense

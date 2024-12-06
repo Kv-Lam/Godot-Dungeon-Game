@@ -13,6 +13,8 @@ func _ready():
 	set_action_name()
 	set_option_text()
 
+
+#Sets text for different keybinds.
 func set_action_name():
 	label.text = "Unassigned"
 	
@@ -30,38 +32,45 @@ func set_action_name():
 		"interact":
 			label.text = "Interact"
 
+
+#Set text for what the player has set the keybind as.
 func set_option_text() -> void:
 	var action_events = InputMap.action_get_events(action_name)
 
-	#Check if there are events for the action. If not, return early.
+	#Check if there are action events. If not, return early. Just for safety.
 	if action_events.size() == 0:
 		button.text = "Unassigned"
 		return
 	
-	var action_event = action_events[0]
-	var action_keycode = OS.get_keycode_string(action_event.physical_keycode)
+	var action_event = action_events[0] #Gets name of the action event.
+	var action_keycode = OS.get_keycode_string(action_event.physical_keycode) #Gets the keybind associated with the action event.
 	
-	button.text = "%s" % action_keycode
+	button.text = "%s" % action_keycode #Sets what key is displayed.
 
+#For when the player is setting a keybind for an action event.
 func _on_button_toggled(toggled_on: bool) -> void:
-	if(toggled_on):
+	if(toggled_on): #Player has selected a keybind to change, so update that one.
 		button.text = "Press any key..."
 		set_process_unhandled_key_input(toggled_on)
 		
 		for i in get_tree().get_nodes_in_group("hotkey_button"):
 			if i.action_name != self.action_name:
-				i.set_process_unhandled_key_input(false)
-	else:
-		for i in get_tree().get_nodes_in_group("hotkey_button"):
+				i.set_process_unhandled_key_input(false) #Disables key input handling for other buttons.
+	else: #Resets all the buttons back to how they originally were (displaying their keybind) if clicked off.
+		for i in get_tree().get_nodes_in_group("hotkey_button"): #Resets other buttons.
 			if i.action_name != self.action_name:
 				i.button.toggle_mode = true
 				i.set_process_unhandled_key_input(false)
 		set_option_text()
 
+
+
 func _unhandled_key_input(event: InputEvent) -> void:
 	rebind_action_key(event)
 	button.button_pressed = false
 
+
+#Rebinds a keybind.
 func rebind_action_key(event: InputEvent) -> void:
 	var is_duplicate = false #Used to make sure no duplicate keybinds.
 	var action_event = event
@@ -86,8 +95,9 @@ func rebind_action_key(event: InputEvent) -> void:
 		#Save the new keybinding in the SettingsManager.
 		SettingsManager.save_keybind(action_name, action_keycode)
 
+
+#Load the keybind from the SettingsManager and apply it to the action.
 func load_keybind():
-	#Load the keybind from the SettingsManager and apply it to the action.
 	var keybind = SettingsManager.load_keybind(action_name)
 	if keybind:
 		var event = InputEventKey.new()

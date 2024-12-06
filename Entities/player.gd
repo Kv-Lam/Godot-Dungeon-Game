@@ -63,7 +63,7 @@ func _physics_process(_delta):
 
 
 func enter_combat(player: CharacterBody2D, enemy_to_free):
-	var collided_enemy: String = enemy_to_free.get_collider().name
+	var collided_enemy: String = enemy_to_free.get_collider().name #Used to make the guaranteed enemy whatever type the player collided into.
 	
 	#Pause the world (stop player movement, enemies, etc.).
 	for node in get_tree().current_scene.get_children():
@@ -72,17 +72,21 @@ func enter_combat(player: CharacterBody2D, enemy_to_free):
 			node.set_process(false)
 			node.set_physics_process(false)
 	
-	
+	#Make player body unable to move/collide into things.
 	set_player_processes(player, false)
 	
 	#Hide the player and make fight scene visible.
 	set_visibilities(player, true)
 	
-	fight.set_up_fight(collided_enemy)
-	await fight.done
+	fight.set_up_fight(collided_enemy) #Sets up the combat and actually lets the player go through it.
+	await fight.done #Waits for a signal from combat stating that it is finished.
+	
+	#Check whether the player won, party wiped, or fled.
 	if fight.won:
-		set_visibilities(player, false)
-		enemy_to_free.get_collider().queue_free()
+		set_visibilities(player, false) #Makes the player visible again.
+		enemy_to_free.get_collider().queue_free() #Deletes the collided enemy from the current room (when player leaves and re-enters room, it is spawned back).
+		
+		#Makes everything unfreeze.
 		for node in get_tree().current_scene.get_children():
 			if node.name != "Player":
 				node.visible = true
@@ -90,16 +94,18 @@ func enter_combat(player: CharacterBody2D, enemy_to_free):
 				node.set_physics_process(true)
 		set_player_processes(player, true)
 		allow_collisions = true
-	elif PartyManager.party.size() == 0: #Party wipe.
-		get_tree().change_scene_to_file("res://scenes/game_over_screen.tscn")
+	elif PartyManager.party.size() == 0: get_tree().change_scene_to_file("res://scenes/game_over_screen.tscn") #Party wipe.
 	else: #Ran from fight.
 		allow_collisions = false
+		#Makes everything visible again.
 		set_visibilities(player, false)
 		for node in get_tree().current_scene.get_children():
 			if node.name != "Player": node.visible = true
+		#Gives player 3 seconds to run from the enemy before the enemies are able to chase/collide.
 		set_player_processes(player, true)
 		await get_tree().create_timer(3).timeout
 		allow_collisions = true
+		#Unfreezes the enemies.
 		for node in get_tree().current_scene.get_children():
 			if node.name != "Player":
 				node.set_process(true)
@@ -107,11 +113,13 @@ func enter_combat(player: CharacterBody2D, enemy_to_free):
 		allow_collisions = true
 
 
+#Pauses player operations so player cannot move during combat.
 func set_player_processes(player: CharacterBody2D, state: bool):
 	player.set_process(state)
 	player.set_physics_process(state)
 
 
+#Used to switch whether player and fight are visible.
 func set_visibilities(player: CharacterBody2D, in_combat: bool) -> void: #If in_combat = true, make fight.visble = true
 	player.visible = not in_combat
 	player_camera.enabled = not in_combat

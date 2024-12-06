@@ -1,16 +1,19 @@
 extends Node
 #Mage
+
+#Kevin's variables 5-9.
 const texture = preload("res://Art/DavidBack.png")
-var level = 1
 var experience = 0
-var health = 60
 var max_health = 60
-const speed = 30
+var mana_stamina = 100
+var has_mana = true
+
+var level = 1
+var health = 60
+var speed = 30
 var attack = 30
 var defense = 10
 const dodge = 20
-var mana_stamina = 100
-var has_mana = true
 const Ability = {0 : "Spell Flux", 3 : "Void Nova", 6 : "Inferno Grasp", 9 : "Final Incantation"}
 #Spell Flux - Calls down starlight to smite enemies or empower allies
 #Void Nova - Unleashes a burst of chaotic energy from the void

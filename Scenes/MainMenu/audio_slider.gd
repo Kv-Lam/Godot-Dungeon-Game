@@ -4,7 +4,7 @@ extends Control
 @onready var audio_number = $"HBoxContainer/Audio Number" as Label
 @onready var h_slider = $HBoxContainer/HSlider as HSlider
 
-@export_enum("Master", "Music", "SFX") var bus_name: String
+@export_enum("Master", "Music", "SFX") var bus_name: String #For naming audio sliders.
 
 var bus_index: int = 0 #Default to Master.
 
@@ -31,6 +31,7 @@ func set_audio_name() -> void:
 	audio_name.text = str(bus_name) + " Volume"
 
 
+#Changes the text for audio value.
 func set_audio_number() -> void:
 	audio_number.text = str(round(h_slider.value * 100)) + '%'
 
@@ -48,15 +49,15 @@ func load_audio() -> void:
 
 
 func set_slider_value() -> void:
-	#Sync slider value with AudioServer
+	#Sync slider value with AudioServer.
 	var current_volume = db_to_linear(AudioServer.get_bus_volume_db(bus_index))
 	h_slider.value = current_volume
 	set_audio_number()
 
 
 func on_value_changed(value: float) -> void:
-	#Update the AudioServer with the new value
+	#Update the AudioServer with the new value.
 	AudioServer.set_bus_volume_db(bus_index, linear_to_db(value))
 	set_audio_number()
 
-	SettingsManager.save_audios(bus_name, value)
+	SettingsManager.save_audios(bus_name, value) #Saves the values into .cfg.

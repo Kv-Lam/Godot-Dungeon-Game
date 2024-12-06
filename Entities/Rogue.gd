@@ -1,6 +1,7 @@
 extends Node
 #Rogue
-#Kevin's variables.
+
+#Kevin's variables 5-9.
 const texture = preload("res://Art/KevinBack.png")
 var experience = 0
 var max_health = 50
@@ -10,7 +11,7 @@ var has_mana = false
 #Minh's variables.
 var level = 1
 var health = 50
-const speed = 60
+var speed = 60
 var attack = 30
 var defense = 30
 const dodge = 50

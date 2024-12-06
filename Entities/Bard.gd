@@ -1,17 +1,19 @@
 extends Node
 #Bard
-# Called when the node enters the scene tree for the first time.
+
+#Kevin's variables 5-9.
 const texture = preload("res://Art/SeanBack.png")
-var level = 1
 var experience = 0
-var health = 100
 var max_health = 100
-const speed = 40
+var mana_stamina = 100
+var has_mana = true
+
+var level = 1
+var health = 100
+var speed = 40
 var attack = 20
 var defense = 40
 const dodge = 30
-var mana_stamina = 100
-var has_mana = true
 const Ability = {0 : "Harmonic Resonance", 3 : "Cacophony Strike", 6 : "Rhapsody of Restoration", 9 : "Harmony's Embrace"}
 
 #Function to save individual stats and position during the game
